@@ -25,35 +25,6 @@ const validationError = {
     confirmation: false
 }
 
-// Load user id from localStorage
-const user_id = localStorage.getItem("id");
-localStorage.removeItem("id");
-if(!user_id) {
-    history.back();
-}
-
-// Fetch old data
-fetch(`http://127.0.0.1:3000/users/${user_id}`)
-.then(res => {
-    if(!res.ok) {
-        console.log("ERROR");
-    } else {
-        return res.json();
-    }
-})
-.then(user => {
-    nameInputElement.defaultValue = user.name;
-    emailInputElement.defaultValue = user.email;
-    phoneInputElement.defaultValue = user.phone;
-    roleInputElement.value = user.role;
-
-    userData.name = user.name;
-    userData.email = user.email;
-    userData.phone = user.phone;
-    userData.role = user.role;
-
-});
-
 
 /**
  * SUBMIT
@@ -70,8 +41,8 @@ userFormElement.addEventListener('submit', (event) => {
     if(!validation) {
         document.getElementById("submit-error").classList.remove("hidden");
     } else {
-        fetch(`http://127.0.0.1:3000/users/${user_id}`, {
-            method: 'PUT',
+        fetch(`http://127.0.0.1:3000/users`, {
+            method: 'POST',
             body: JSON.stringify(userData),
             headers: {
                 'Content-Type': 'application/json'
