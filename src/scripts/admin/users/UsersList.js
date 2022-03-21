@@ -1,13 +1,53 @@
-const userListComponent = document.getElementById("user-list");
+const userListElement = document.getElementById("user-list");
+const deleteMarkedUsersButton = document.getElementById("delete-marked-users-button");
+
+// List of marked users id
+var markedUsers = []
+
+// checkbox action
+function checkboxEvent(checkbox) {
+    if(checkbox.checked) {
+        markedUsers.push(checkbox.value);
+    } else { 
+        markedUsers = markedUsers.filter(id => id !== checkbox.value);
+    }
+}
+
+// Event listeners
+deleteMarkedUsersButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    if(markedUsers.length > 0) {
+        markedUsers.forEach(async (id) => {
+            await fetch(`http://127.0.0.1:3000/users/${id}`, {
+                method: "DELETE"
+            })
+            .then(res => {
+                if(!res.ok) {
+                    console.log("Error");
+                } else {
+                    return res.json();
+                }
+            })
+            .then(data => {
+                if(data.removed) {
+                    const oldUserElement = document.getElementById(id);
+                    oldUserElement.parentNode.removeChild(oldUserElement);
+                } else {
+                    console.log("Error");
+                }
+            });
+        });
+    }
+});
 
 // Custom component for show each user
 const userDetailsComponent = (user) => {
     return (`
-        <li>
+        <li id=${user.id}>
             <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
                 <div class="flex flex-col h-full">
                     <div>
-                        <input type="checkbox" name="user1" id="user1" value=${user.id}>
+                        <input type="checkbox" name="user1" id="user1" value=${user.id} onchange="checkboxEvent(this)">
                         <label class="font-bold text-lg"
                         for=${user.id}>
                             ${user.name}
@@ -44,6 +84,6 @@ fetch("http://127.0.0.1:3000/users")
 })
 .then(data => {
     data.forEach(user => {
-        userListComponent.innerHTML += userDetailsComponent(user)
+        userListElement.innerHTML += userDetailsComponent(user)
     });
 });
