@@ -72,7 +72,7 @@ deleteMarkedUsersButton.addEventListener('click', (event) => {
 const userDetailsComponent = (user) => {
     return (`
         <li id=${user.id}>
-            <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
+            <div class="flex flex-col justify-center md:flex-row md:justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
                 <div class="flex flex-col items-center md:flex-row h-full">
                     <div class="sm:m-0 md:m-2">
                         <input type="checkbox" name=${user.email} value=${user.id} onchange="checkboxEvent(this)">
@@ -89,13 +89,13 @@ const userDetailsComponent = (user) => {
                     <button
                     value=${user.id}
                     onclick=navigateToUpdate(this)
-                    class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2">
+                    class="text-blue-500 underline md:no-underline md:bg-blue-500 md:text-white font-bold px-3 py-2 rounded md:m-2">
                         Editar usuario
                     </button>
                     <button
                     value=${user.id}
                     onclick="deleteUser(this)"
-                    class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2">
+                    class="text-red-500 underline md:no-underline md:bg-red-500 md:text-white font-bold px-3 py-2 rounded md:m-2">
                         Eliminar usuario
                     </button>
                 </div>
