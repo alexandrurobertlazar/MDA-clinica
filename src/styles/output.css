@@ -651,9 +651,23 @@ Ensure the default browser behavior of the `hidden` attribute.
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+@media (min-width: 640px) {
+  .sm\:m-0 {
+    margin: 0px;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:m-8 {
     margin: 2rem;
+  }
+
+  .md\:m-2 {
+    margin: 0.5rem;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
   }
 }
 

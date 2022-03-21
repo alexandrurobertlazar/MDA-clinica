@@ -67,8 +67,8 @@ const userDetailsComponent = (user) => {
     return (`
         <li id=${user.id}>
             <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
-                <div class="flex flex-col h-full">
-                    <div>
+                <div class="flex flex-col items-center md:flex-row h-full">
+                    <div class="sm:m-0 md:m-2">
                         <input type="checkbox" name=${user.email} value=${user.id} onchange="checkboxEvent(this)">
                         <label class="font-bold text-lg"
                         for=${user.email}>
@@ -79,7 +79,7 @@ const userDetailsComponent = (user) => {
                         ${user.email}
                     </h5>
                 </div>
-                <div class="flex flex-col">
+                <div class="flex flex-col md:flex-row">
                     <a
                     class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2"
                     href="#">
