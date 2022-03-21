@@ -12,14 +12,53 @@
         <h1 class="text-4xl font-bold">Editar usuario</h1>
         <h3>Edite los datos del siguiente usuario</h3>
     </div>
-    <form>
-        <label for="name">Nombre</label>
-        <input type="text" name="name" id="name">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" id="password">
-    </form>
+    <div class="flex flex-col items-center">
+        <form
+        id="user-form"
+        class="w-3/4 flex flex-col justify-center content-center items-center m-3 p-2.5 shadow rounded">
+            <div id="name-container" class="flex flex-col items-center">
+                <label class="font-bold m-1" for="name">Nombre</label>
+                <input
+                class="border rounded p-1 focus:outline-blue-500"
+                type="text" name="name" id="name" required>
+            </div>
+            <div id="email-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="email">Email</label>
+                <input 
+                class="border rounded p-1 focus:outline-blue-500"
+                type="email" name="email" id="email" required>
+            </div>
+            <div id="role-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="role">Rol</label>
+                <select name="role" id="role" class="border rounded p-1 focus:outline-blue-500" required>
+                    <option value="paciente">Paciente</option>
+                    <option value="especialista">Especialista</option>
+                    <option value="auxiliar">Auxiliar</option>
+                    <option value="enfermero">Enfermero</option>
+                    <option value="admin">Administrador</option>
+                </select>
+            </div>
+            <div id="password-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="password">Contraseña</label>
+                <input
+                class="border rounded p-1 focus:outline-blue-500"
+                type="password" name="password" id="password" required>
+            </div>
+            <div id="password2-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="password-confirmation">Confirmar contraseña</label>
+                <input
+                class="border rounded p-1 focus:outline-blue-500"
+                type="password" name="password-confirmation" id="password-confirmation" required>
+            </div>
+            <div id="submit-container" class="flex flex-col items-center">
+                <button 
+                class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2"
+                type="submit">
+                    Actualizar
+                </button>
+            </div>
+        </form>
+    </div>
     <script src="../../../scripts/admin/users/UpdateUser.js"></script>
 </body>
 </html>
