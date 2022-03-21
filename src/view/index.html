@@ -1,13 +1,196 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link href="../assets/font-awesome/css/fontawesome.css" rel="stylesheet">
+    <link href="../assets/font-awesome/css/brands.css" rel="stylesheet">
+    <link href="../assets/font-awesome/css/solid.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/output.css">
-    <title>Clínica</title>
+    <title>Clínica ULPGC</title>
 </head>
-<body>
-    <h1 class="text-lg font-extralight text-cyan-500">Clínica MDA</h1>
+<body class="bg-slate-100 w-full">
+    <!--wrapper con todo el body-->
+    <div class="flex flex-col md:px-8 lg:px-20 my-4 w-full">
+        <!--aquí va el navbar-->
+        <!--wrapper-->
+        <div class="bg-white w-full flex flex-col md:flex-row mt-6 rounded-lg shadow-sm p-4 items-center justify-around">
+            <div class="w-full md:w-1/3 m-4">
+                <p><span class="text-3xl font-bold">Clínica ULPGC</span><br>
+                Tras 25 años, podemos decir que tenemos una gran experiencia tratando con nuestros pacientes. Tenemos los mejores médicos de Canarias, avalados por la IUPAC. ¿A qué esperas para pedir una cita con nosotros?</p>
+                <a type="button" href="tel:00346123456789" class="button-blue mt-4">¡Llámanos para unirte a nuestra familia!</a>
+            </div>
+            <div class="w-full md:w-1/3 m-4">
+                <img src="../assets/1282794.jpg" alt="Vista de centro médico" class="rounded-full">
+                <div class="flex flex-row justify-center w-full">
+                    <div class="flex flex-row justify-between shadow-lg -mt-6 bg-white rounded-lg p-4 text-center items-center">
+                        <div><span class="text-xl text-blue-600 font-bold">+100</span><br>clientes</div>
+                        <div class="border-r mx-4 h-full"></div>
+                        <div><span class="text-xl text-blue-600 font-bold">+50</span><br>pruebas médicas</div>
+                        <div class="border-r mx-4 h-full"></div>
+                        <div class="hidden sm:block"><span class="text-xl text-blue-600 font-bold">+25</span><br>analistas</div>
+                        <div class="border-r mx-4 h-full hidden sm:block"></div>
+                        <div><span class="text-xl text-blue-600 font-bold">5</span><br>médicos profesionales</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white flex flex-col md:flex-row mt-6 rounded-lg shadow-sm p-4 items-center justify-around">
+            <div class="w-full md:w-1/3 m-4">
+                <img src="../assets/958470.jpg" alt="Vista de centro médico" class="rounded-full">
+            </div>
+            <div class="w-full md:w-1/3 m-4">
+                <article><span class="text-3xl font-bold">¿Por qué confiar en nosotros?</span><br>
+                    <ol class="list-disc mt-4 px-4">
+                        <li>Tenemos los mejores médicos de Canarias (avalados por la prestigiosa IUPAC).</li>
+                        <li>Nuestra gran cantidad de reseñas positivas avalan nuestra calidad.</li>
+                        <li>Además, contamos con 25 años de experiencia, tratando a nuestros pacientes con la máxima calidad y cariño.</li>
+                    </ol>
+                </article>
+                <a type="button" href="mailto:clinicas@ulpgc.ro" class="button-blue mt-4">¡Envíanos un correo!</a>
+            </div>            
+        </div>
+        <div class="bg-white flex flex-col mt-6 rounded-lg shadow-sm p-4 items-center justify-center">
+            <p class="font-bold text-2xl text-center">Echa un vistazo a nuestros doctores</p>
+            <div class="flex flex-col md:flex-row justify-around w-full my-4 flex-wrap">
+                <div class="shadow-md shadow-emerald-300 p-4 m-2 flex flex-col text-center">
+                    <img class="rounded-full" src="" alt="">
+                    <span class="font-bold">Dr. Alexandru</span>
+                    <span class="font-light">Graficólogo</span>
+                    <div class="flex flex-row justify-center mt-4">
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                    </div>
+                    <div class="flex flex-row justify-center mt-4 items-center">
+                        <i class="fa-solid fa-clock"></i>
+                        <span class="mx-2">08:30 - 13:30</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="mx-2">Miércoles - Viernes</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-location-pin"></i>
+                        <span class="mx-2">Despacho XL</span>
+                    </div>
+                </div>
+                <div class="shadow-md shadow-emerald-300 p-4 m-2 flex flex-col text-center">
+                    <img class="rounded-full" src="" alt="">
+                    <span class="font-bold">Dra. Ariadna</span>
+                    <span class="font-light">Ordenadoróloga</span>
+                    <div class="flex flex-row justify-center mt-4">
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                    </div>
+                    <div class="flex flex-row justify-center mt-4 items-center">
+                        <i class="fa-solid fa-clock"></i>
+                        <span class="mx-2">08:30 - 14:30</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="mx-2">Miércoles - Viernes</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-location-pin"></i>
+                        <span class="mx-2">Despacho XL</span>
+                    </div>
+                </div>
+                <div class="shadow-md shadow-emerald-300 p-4 m-2 flex flex-col text-center">
+                    <img class="rounded-full" src="" alt="">
+                    <span class="font-bold">Dr. Alejandro</span>
+                    <span class="font-light">Backendólogo</span>
+                    <div class="flex flex-row justify-center mt-4">
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                    </div>
+                    <div class="flex flex-row justify-center mt-4 items-center">
+                        <i class="fa-solid fa-clock"></i>
+                        <span class="mx-2">08:30 - 15:30</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="mx-2">Lunes - Viernes</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-location-pin"></i>
+                        <span class="mx-2">Despacho 1</span>
+                    </div>
+                </div>
+                <div class="shadow-md shadow-emerald-300 p-4 m-2 flex flex-col text-center">
+                    <img class="rounded-full" src="" alt="">
+                    <span class="font-bold">Dr. Danilo</span>
+                    <span class="font-light">Loginólogo</span>
+                    <div class="flex flex-row justify-center mt-4">
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                    </div>
+                    <div class="flex flex-row justify-center mt-4 items-center">
+                        <i class="fa-solid fa-clock"></i>
+                        <span class="mx-2">08:30 - 13:30</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="mx-2">Lunes - Miércoles</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-location-pin"></i>
+                        <span class="mx-2">Despacho 2</span>
+                    </div>
+                </div>
+                <div class="shadow-md shadow-emerald-300 p-4 m-2 flex flex-col text-center">
+                    <img class="rounded-full" src="" alt="">
+                    <span class="font-bold">Dr. Raúl</span>
+                    <span class="font-light">MongoDBólogo</span>
+                    <div class="flex flex-row justify-center mt-4">
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                        <i class="fa-solid fa-star mx-1"></i>
+                    </div>
+                    <div class="flex flex-row justify-center mt-4 items-center">
+                        <i class="fa-solid fa-clock"></i>
+                        <span class="mx-2">08:30 - 16:30</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <span class="mx-2">Lunes - Viernes</span>
+                    </div>
+                    <div class="flex flex-row justify-center mt-2 items-center">
+                        <i class="fa-solid fa-location-pin"></i>
+                        <span class="mx-2">Despacho 3</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="bg-white w-full flex flex-col mt-6 rounded-lg shadow-sm p-4 items-center justify-center">
+            <p class="text-2xl font-bold">Nuestros colaboradores</p>
+            <div class="flex flex-col md:flex-row justify-around w-full items-center p-4 py-6">
+                <img src="../assets/logos/logo_clinicas_ramirez.png" alt="Logo de Clínicas Ramírez" width="200px">
+                <img src="../assets/logos/logo_oido_cocina.png" alt="Logo de Oído Cocina" width="200px">
+                <img src="../assets/logos/logo_cocinas_campus.gif" alt="Logo de Comidas Campus" width="200px">
+            </div>
+        </div>
+
+        <div class="bg-white w-full flex flex-col mt-6 rounded-lg shadow-sm p-4 items-center justify-center">
+            <p class="text-2xl font-bold">Dónde nos encontramos</p>
+            <div class="mt-4 w-full px-4"><iframe class="w-full h-96 rounded-md" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=Escuela%20de%20Ingenier%C3%ADa%20Inform%C3%A1tica+(Nuestra%20ubicaci%C3%B3n)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
+        </div>
+    </div>
 </body>
 </html>
