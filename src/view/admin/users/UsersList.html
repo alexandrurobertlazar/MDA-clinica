@@ -12,34 +12,7 @@
         <h1 class="text-4xl font-bold">Lista de usuarios</h1>
         <h3>En esta página podrá administrar los usuarios de la plataforma</h3>
         <div class="w-full">
-            <ul>
-                <li>
-                    <div class="flex justify-between content-center items-center flex-wrap rounded border m-2 p-2.5">
-                        <div class="flex flex-col h-full">
-                            <div>
-                                <input type="checkbox" name="user1" id="user1" value="user1-id">
-                                <label class="font-bold text-lg"
-                                for="user1">
-                                    User 1
-                                </label>
-                            </div>
-                            <h5 class="font-light">
-                                user1@example.com
-                            </h5>
-                        </div>
-                        <div class="flex flex-col">
-                            <a
-                            class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2"
-                            href="#">
-                                Editar usuario
-                            </a>
-                            <button 
-                            class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2">
-                                Eliminar usuario
-                            </button>
-                        </div>
-                    </div>
-                </li>
+            <ul id="user-list">
             </ul>
         </div>
         <button
@@ -47,5 +20,6 @@
             Eliminar los usuarios marcados
         </button>
     </div>
+    <script src="../../../scripts/admin/users/UsersList.js"></script>
 </body>
 </html>
