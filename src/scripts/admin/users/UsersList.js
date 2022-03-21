@@ -13,6 +13,28 @@ function checkboxEvent(checkbox) {
     }
 }
 
+// delete only ONE user
+async function deleteUser(button) {
+    await fetch(`http://127.0.0.1:3000/users/${button.value}`, {
+        method: "DELETE"
+    })
+    .then(res => {
+        if(!res.ok) {
+            console.log("Error");
+        } else {
+            return res.json();
+        }
+    })
+    .then(data => {
+        if(data.removed) {
+            const oldUserElement = document.getElementById(button.value);
+            oldUserElement.parentNode.removeChild(oldUserElement);
+        } else {
+            console.log("Error");
+        }
+    });
+}
+
 // Event listeners
 deleteMarkedUsersButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -47,9 +69,9 @@ const userDetailsComponent = (user) => {
             <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
                 <div class="flex flex-col h-full">
                     <div>
-                        <input type="checkbox" name="user1" id="user1" value=${user.id} onchange="checkboxEvent(this)">
+                        <input type="checkbox" name=${user.email} value=${user.id} onchange="checkboxEvent(this)">
                         <label class="font-bold text-lg"
-                        for=${user.id}>
+                        for=${user.email}>
                             ${user.name}
                         </label>
                     </div>
@@ -63,7 +85,9 @@ const userDetailsComponent = (user) => {
                     href="#">
                         Editar usuario
                     </a>
-                    <button 
+                    <button
+                    value=${user.id}
+                    onclick="deleteUser(this)"
                     class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2">
                         Eliminar usuario
                     </button>
