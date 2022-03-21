@@ -96,7 +96,7 @@ const userDetailsComponent = (user) => {
                     value=${user.id}
                     onclick=navigateToDetails(this)
                     class="text-slate-500 underline md:no-underline md:bg-slate-500 md:text-white font-bold px-3 py-2 rounded md:m-2">
-                        Editar usuario
+                        Ver detalles
                     </button>
                     <button
                     value=${user.id}
