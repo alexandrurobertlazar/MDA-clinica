@@ -15,10 +15,11 @@
     <div id="form-container" class="flex flex-col items-center">
         <div id="success-container" class="hidden flex-col items-center m-3 p-3 rounded border shadow">
             <h2 class="text-xl font-bold">El usuario ha sido actualizado con éxito</h2>
-            <button 
+            <a
+            href="./UsersList.html"
             class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2">
                 Volver atrás
-            </button>
+            </a>
         </div>
         <form
         id="user-form"
@@ -36,6 +37,13 @@
                 class="border rounded p-1 focus:outline-blue-500"
                 type="email" name="email" id="email" required>
                 <h4 id="email-error" class="font-light text-red-600 hidden">El email no es válido</h4> 
+            </div>
+            <div id="phone-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="phone">Teléfono</label>
+                <input 
+                class="border rounded p-1 focus:outline-blue-500"
+                type="tel" name="phone" id="phone" required>
+                <h4 id="phone-error" class="font-light text-red-600 hidden">El email no es válido</h4> 
             </div>
             <div id="role-container" class="flex flex-col items-center m-2">
                 <label class="font-bold m-1" for="role">Rol</label>

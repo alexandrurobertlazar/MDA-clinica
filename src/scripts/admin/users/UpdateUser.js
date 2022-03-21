@@ -1,5 +1,6 @@
 const nameInputElement = document.getElementById("name");
 const emailInputElement = document.getElementById("email");
+const phoneInputElement = document.getElementById("phone");
 const roleInputElement = document.getElementById("role");
 const passwordInputElement = document.getElementById("password");
 const passwordConfirmationInputElement = document.getElementById("password-confirmation");
@@ -9,6 +10,7 @@ const userFormElement = document.getElementById("user-form");
 const userData = {
     name: "",
     email: "",
+    phone: "",
     role: "",
     password: ""
 };
@@ -17,6 +19,7 @@ const userData = {
 const validationError = {
     name: false,
     email: false,
+    phone: false,
     role: false,
     password: false,
     confirmation: false
@@ -40,10 +43,20 @@ fetch(`http://127.0.0.1:3000/users/${user_id}`)
 .then(user => {
     nameInputElement.defaultValue = user.name;
     emailInputElement.defaultValue = user.email;
+    phoneInputElement.defaultValue = user.phone;
     roleInputElement.value = user.role;
+
+    userData.name = user.name;
+    userData.email = user.email;
+    userData.phone = user.phone;
+    userData.role = user.role;
+
 });
 
-// Event listener
+
+/**
+ * SUBMIT
+ */
 userFormElement.addEventListener('submit', (event) => {
     event.preventDefault();
     var validation = true;
@@ -54,15 +67,32 @@ userFormElement.addEventListener('submit', (event) => {
         }
     });
     if(!validation) {
-        document.getElementById("submit-container").innerHTML += validationErrorComponent("Revise todos los campos");
+        document.getElementById("submit-error").classList.remove("hidden");
     } else {
-        document.getElementById("success-container").classList.add('flex');
-        document.getElementById("success-container").classList.remove('hidden');
-        userFormElement.classList.add('hidden');
-        userFormElement.classList.remove('flex');
+        fetch(`http://127.0.0.1:3000/users/${user_id}`, {
+            method: 'PUT',
+            body: JSON.stringify(userData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => {
+            if(!res.ok) {
+                console.log("ERROR");
+            } else {
+                document.getElementById("submit-error").classList.add("hidden");
+                document.getElementById("success-container").classList.add('flex');
+                document.getElementById("success-container").classList.remove('hidden');
+                userFormElement.classList.add('hidden');
+                userFormElement.classList.remove('flex');
+            }
+        });
     }
 });
 
+/**
+ * INPUTS VALIDATIONS
+ */
 nameInputElement.addEventListener('change', (event) => {
     const value = event.target.value;
     if(value.length <= 3) {
@@ -88,8 +118,21 @@ emailInputElement.addEventListener('change', (event) => {
     }
 });
 
+phoneInputElement.addEventListener('change', event => {
+    const value = event.target.value;
+    const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    if(!re.test(value)) {
+        validationError.phone = true;
+        document.getElementById("phone-error").classList.remove('hidden');
+    } else {
+        document.getElementById("phone-error").classList.add('hidden');
+        validationError.phone = false;
+        userData.phone = value;
+    }
+});
+
 roleInputElement.addEventListener('change', (event) => {
-    console.log(event.target.value);
+    userData.role = event.target.value;
 });
 
 passwordInputElement.addEventListener('change', (event) => {
@@ -108,9 +151,9 @@ passwordConfirmationInputElement.addEventListener('change', (event) => {
     const value = event.target.value;
     if(value !== userData.password) {
         validationError.confirmation = true;
-        document.getElementById("password2-container").classList.remove('hidden');
+        document.getElementById("password2-error").classList.remove('hidden');
     } else {
-        document.getElementById("password2-container").classList.add('hidden');
+        document.getElementById("password2-error").classList.add('hidden');
         validationError.confirmation = false
     }
-})
+});
