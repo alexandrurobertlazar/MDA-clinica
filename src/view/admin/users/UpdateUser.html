@@ -12,7 +12,14 @@
         <h1 class="text-4xl font-bold">Editar usuario</h1>
         <h3>Edite los datos del siguiente usuario</h3>
     </div>
-    <div class="flex flex-col items-center">
+    <div id="form-container" class="flex flex-col items-center">
+        <div id="success-container" class="hidden flex-col items-center m-3 p-3 rounded border shadow">
+            <h2 class="text-xl font-bold">El usuario ha sido actualizado con éxito</h2>
+            <button 
+            class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2">
+                Volver atrás
+            </button>
+        </div>
         <form
         id="user-form"
         class="w-3/4 flex flex-col justify-center content-center items-center m-3 p-2.5 shadow rounded">
@@ -21,12 +28,14 @@
                 <input
                 class="border rounded p-1 focus:outline-blue-500"
                 type="text" name="name" id="name" required>
+                <h4 id="name-error" class="font-light text-red-600 hidden">El nombre no es válido</h4> 
             </div>
             <div id="email-container" class="flex flex-col items-center m-2">
                 <label class="font-bold m-1" for="email">Email</label>
                 <input 
                 class="border rounded p-1 focus:outline-blue-500"
                 type="email" name="email" id="email" required>
+                <h4 id="email-error" class="font-light text-red-600 hidden">El email no es válido</h4> 
             </div>
             <div id="role-container" class="flex flex-col items-center m-2">
                 <label class="font-bold m-1" for="role">Rol</label>
@@ -43,12 +52,14 @@
                 <input
                 class="border rounded p-1 focus:outline-blue-500"
                 type="password" name="password" id="password" required>
+                <h4 id="password-error" class="font-light text-red-600 hidden">La contraseña no es válida</h4>
             </div>
             <div id="password2-container" class="flex flex-col items-center m-2">
                 <label class="font-bold m-1" for="password-confirmation">Confirmar contraseña</label>
                 <input
                 class="border rounded p-1 focus:outline-blue-500"
                 type="password" name="password-confirmation" id="password-confirmation" required>
+                <h4 id="password2-error" class="font-light text-red-600 hidden">Las contraseñas no coinciden</h4>
             </div>
             <div id="submit-container" class="flex flex-col items-center">
                 <button 
@@ -56,6 +67,7 @@
                 type="submit">
                     Actualizar
                 </button>
+                <h4 id="submit-error" class="font-light text-red-600 hidden">Revise todos los campos</h4> 
             </div>
         </form>
     </div>

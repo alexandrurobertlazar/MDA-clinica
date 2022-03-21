@@ -22,14 +22,6 @@ const validationError = {
     confirmation: false
 }
 
-const validationErrorComponent = (error) => {
-    return(`
-        <h4 class="font-light text-red-600">${error}</h4>        
-    `)
-}
-
-
-
 // Load user id from localStorage
 const user_id = localStorage.getItem("id");
 if(!user_id) {
@@ -56,14 +48,18 @@ userFormElement.addEventListener('submit', (event) => {
     event.preventDefault();
     var validation = true;
     Object.entries(validationError).forEach(error => {
-        if(error) {
+        const [, value] = error;
+        if(value) {
             validation = false;
         }
     });
     if(!validation) {
         document.getElementById("submit-container").innerHTML += validationErrorComponent("Revise todos los campos");
     } else {
-        console.log("validado");
+        document.getElementById("success-container").classList.add('flex');
+        document.getElementById("success-container").classList.remove('hidden');
+        userFormElement.classList.add('hidden');
+        userFormElement.classList.remove('flex');
     }
 });
 
@@ -71,8 +67,9 @@ nameInputElement.addEventListener('change', (event) => {
     const value = event.target.value;
     if(value.length <= 3) {
         validationError.name = true;
-        document.getElementById("name-container").innerHTML += validationErrorComponent("El nombre es demasiado corto");
+        document.getElementById("name-error").classList.remove('hidden');
     } else {
+        document.getElementById("name-error").classList.add('hidden');
         validationError.name = false;
         userData.name = value;
     }
@@ -83,8 +80,9 @@ emailInputElement.addEventListener('change', (event) => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(!re.test(value)) {
         validationError.email = true;
-        document.getElementById("email-container").innerHTML += validationErrorComponent("El email no es válido");
+        document.getElementById("email-error").classList.remove('hidden');
     } else {
+        document.getElementById("email-error").classList.add('hidden');
         validationError.email = false;
         userData.email = value;
     }
@@ -98,8 +96,9 @@ passwordInputElement.addEventListener('change', (event) => {
     const value = event.target.value;
     if(value.length <= 5) {
         validationError.password = true;
-        document.getElementById("password-container").innerHTML += validationErrorComponent("La contraseña es demasiado corta");
+        document.getElementById("email-error").classList.remove('hidden');
     } else {
+        document.getElementById("email-error").classList.add('hidden');
         validationError.password = false;
         userData.password = value;
     }
@@ -109,8 +108,9 @@ passwordConfirmationInputElement.addEventListener('change', (event) => {
     const value = event.target.value;
     if(value !== userData.password) {
         validationError.confirmation = true;
-        document.getElementById("password2-container").innerHTML += validationErrorComponent("Las contraseñas no coinciden");
+        document.getElementById("password2-container").classList.remove('hidden');
     } else {
+        document.getElementById("password2-container").classList.add('hidden');
         validationError.confirmation = false
     }
 })
