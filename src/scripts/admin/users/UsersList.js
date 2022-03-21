@@ -13,6 +13,12 @@ function checkboxEvent(checkbox) {
     }
 }
 
+// navigate to update user
+function navigateToUpdate(button) {
+    localStorage.setItem('id', button.value);
+    window.location.href = 'http://127.0.0.1:5500/src/view/admin/users/UpdateUser.html';
+}
+
 // delete only ONE user
 async function deleteUser(button) {
     await fetch(`http://127.0.0.1:3000/users/${button.value}`, {
@@ -80,11 +86,12 @@ const userDetailsComponent = (user) => {
                     </h5>
                 </div>
                 <div class="flex flex-col md:flex-row">
-                    <a
-                    class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2"
-                    href="#">
+                    <button
+                    value=${user.id}
+                    onclick=navigateToUpdate(this)
+                    class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2">
                         Editar usuario
-                    </a>
+                    </button>
                     <button
                     value=${user.id}
                     onclick="deleteUser(this)"
