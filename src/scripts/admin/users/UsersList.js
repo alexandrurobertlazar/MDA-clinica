@@ -13,6 +13,12 @@ function checkboxEvent(checkbox) {
     }
 }
 
+// navigate to user details
+function navigateToDetails(button) {
+    localStorage.setItem('id', button.value);
+    window.location.href = 'http://127.0.0.1:5500/src/view/admin/users/UserDetails.html';
+}
+
 // navigate to update user
 function navigateToUpdate(button) {
     localStorage.setItem('id', button.value);
@@ -86,6 +92,12 @@ const userDetailsComponent = (user) => {
                     </h5>
                 </div>
                 <div class="flex flex-col md:flex-row">
+                    <button
+                    value=${user.id}
+                    onclick=navigateToDetails(this)
+                    class="text-slate-500 underline md:no-underline md:bg-slate-500 md:text-white font-bold px-3 py-2 rounded md:m-2">
+                        Editar usuario
+                    </button>
                     <button
                     value=${user.id}
                     onclick=navigateToUpdate(this)
