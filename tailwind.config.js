@@ -1,7 +1,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        permanent: ['Permanent Marker'], 
+      },
+    },
   },
   plugins: [],
 }
