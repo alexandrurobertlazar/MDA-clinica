@@ -92,7 +92,7 @@ emailInputElement.addEventListener('change', (event) => {
 
 phoneInputElement.addEventListener('change', event => {
     const value = event.target.value;
-    const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    const re = /^(\+(\d{2}))?(\d{9})$/;
     if(!re.test(value)) {
         validationError.phone = true;
         document.getElementById("phone-error").classList.remove('hidden');
