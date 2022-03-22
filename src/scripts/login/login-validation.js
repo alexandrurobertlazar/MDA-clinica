@@ -1,10 +1,37 @@
+//Campos del formulario de login
+const usuario = document.getElementById('email');
+const contra = document.getElementById('password');
+
 //Al enviar el formulario, se valida si todos sus campos cumplen con las resticciones propuestas.
 $(document).ready(function(){
     const form = document.getElementById('formulario_login');
     form.addEventListener('submit', e => {
 
         // Función que valida la información del formulario
-        loginValidacion(e);
+        if(loginValidacion(e)){
+            /**
+             * FETCH USER DATA
+             */
+            fetch(`http://127.0.0.1:3000/user/login/`,{
+                method: "POST",
+                body: {
+                    "email": usuario,
+                    "password": contra
+                }
+            })
+            .then(res => {
+                if(!res.ok) {
+                    console.log("ERROR");
+                } else {
+                    return res.json();
+                }
+            })
+            .then(data => {
+                localStorage.setItem("user_id",data.id);
+                localStorage.setItem("role",data.role);
+                window.location.href = 'http://127.0.0.1:5500/src/view/index.html';
+            })
+        }
     });
 });
 
@@ -13,10 +40,6 @@ function loginValidacion(evento) {
     
     //Variable de control que maneja cuando el usuario y contraeña son válidos.
     var control;
-
-    //Campos del formulario de login
-    const usuario = document.getElementById('email');
-    const contra = document.getElementById('password');
 
     //Mensaje de error.
     let error_usuario = document.getElementById('error_usuario');
@@ -77,3 +100,4 @@ function colorFocusContra (){
         $(this).css('outline-color','red');
     });
 }
+
