@@ -1,37 +1,5 @@
-const citaComponent = (data) =>{
-    return (`
-        <li>
-            <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
-                <div class="flex flex-row items-center justify-start">
-                    <input type="checkbox" class="m-2"> 
-                    <div id="info-cita">
-                        <label id="title" class="mx-3"> ${data.title}</label>
-                        <label id="fecha" class="mx-3">${data.date}</label>
-                        <label id="doc" class="mx-3">${data.especialist}</label>
-                    </div>
-                </div>
-                <div class="flex flex-row items-center justify-content-end">
-                    <button 
-                    value=${data.id}
-                    onclick="updateAppointment(this)"
-                    class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2"
-                    >
-                        Modificar
-                    </button>
-                    <button
-                    class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2" 
-                    onclick="deleteAppointment()"
-                    >
-                        Eliminar
-                    </button>
-                </div>
-            </li>
-        </div>
-    `);
-};
-
 //Cuando se tenga un token se podrá poner las citas del usuario logeado y se cambiara la url
-const url="http://127.0.0.1:3000/appointments/usr/623397cd28a7957cb8221999";
+const url="http://127.0.0.1:3000/appointments/usr/62398dfff2ef62b05643d01d";
 const citas = document.getElementById("citas");
 fetch(url).then(res=>{
     if(!res.ok){
@@ -42,7 +10,52 @@ fetch(url).then(res=>{
 })
 .then(data =>{
     data.forEach(appointment => {
-        citas.innerHTML += citaComponent(appointment);
+        let title = appointment.title;
+        let dateRaw = appointment.date.substring(0, appointment.date.length-8);
+        let dateSplitted = dateRaw.split("T");
+        let date = dateSplitted[0] + "  " + dateSplitted[1];
+        let appointment_id = appointment.id;
+        fetch(`http://127.0.0.1:3000/users/${appointment.especialist}`).then(res =>{
+            if(res.ok){
+                return res.json();
+            }
+        }).then(data =>{
+            console.log(data);
+            console.log(title);
+            console.log(date);
+            console.log(data.name);
+            console.log(appointment_id);
+            citas.innerHTML += `
+            <li>
+                <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
+                    <div class="flex flex-row items-center justify-start">
+                        <input type="checkbox" class="m-2"> 
+                        <div id="info-cita">
+                            <label id="title" class="mx-3 font-bold"> ${title}</label>
+                            <label id="fecha" class="mx-3">${date}</label>
+                            <label id="docLabel" class="mx-3 font-bold">Especialista: </label>
+                            <label id="doc" class="mx-3">  ${data.name} </label>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-center justify-content-end">
+                        <button 
+                        value=${appointment_id}
+                        onclick="updateAppointment(this)"
+                        class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2"
+                        >
+                            Modificar
+                        </button>
+                        <button
+                        class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2" 
+                        onclick="deleteAppointment()"
+                        >
+                            Eliminar
+                        </button>
+                    </div>
+                </li>
+            </div>
+            `;
+        });
     });
 });
 

@@ -3,10 +3,11 @@ localStorage.removeItem("appointmentData");
 console.log(citaId);
 //Hacer una llamada a la tabla de usuarios para que devuelva todos los especialistas 
 //y ponerlos como opciones en el select
-const especialist = document.getElementById("especialist-select");
+const especialistSelector = document.getElementById("especialist-select");
 const date=document.getElementById("date-selector");
 const desc = document.getElementById("appointment-desc");
 const form = document.getElementById("form");
+let especialistOrigin = "";
 
 const cita={
     title: "",
@@ -26,8 +27,6 @@ fetch(url).then(res=>{
     }
 })
 .then(data =>{
-    //Especialistas select
-
     //Fecha
     let strDate = data.date.substring(0, data.date.length-1);
     date.setAttribute("value", strDate);
@@ -35,8 +34,26 @@ fetch(url).then(res=>{
     //Descripción
     console.log(data.desc);
     desc.value=data.desc;
+
+    //Especialista original
+    especialistOrigin = data.especialist;
+})
+
+fetch("http://127.0.0.1:3000/users/role/especialista").then(res =>{
+    if(res.ok){
+        return res.json();
+    }
+}).then(data =>{
+    data.forEach(especialist => {
+        if(especialist.id === especialistOrigin){
+            especialistSelector.innerHTML+= `<option selected value="${especialist.id}"> ${especialist.name} </option>`
+        } else{
+            especialistSelector.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
+        }
+    });
 });
 
 form.addEventListener('submit', (event) =>{
+    event.preventDefault();
     console.log("hola");;
 });

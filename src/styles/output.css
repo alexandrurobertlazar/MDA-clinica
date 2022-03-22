@@ -506,8 +506,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.5rem;
 }
 
+.ml-20 {
+  margin-left: 5rem;
+}
+
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .w-3\/4 {
@@ -518,12 +530,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   list-style-type: none;
 }
 
-.flex-row {
-  flex-direction: row;
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
-.flex-row-reverse {
-  flex-direction: row-reverse;
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {
@@ -536,10 +548,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .content-center {
   align-content: center;
-}
-
-.items-start {
-  align-items: flex-start;
 }
 
 .items-center {
@@ -616,6 +624,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 700;
 }
 
+.font-normal {
+  font-weight: 400;
+}
+
 .text-cyan-500 {
   --tw-text-opacity: 1;
   color: rgb(6 182 212 / var(--tw-text-opacity));
@@ -626,10 +638,43 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.underline {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\:text-xl:hover {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.hover\:text-base:hover {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.hover\:text-sm:hover {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.hover\:font-bold:hover {
+  font-weight: 700;
+}
+
+.hover\:underline:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.hover\:underline-offset-4:hover {
+  text-underline-offset: 4px;
 }
 
 @media (min-width: 768px) {
