@@ -1,6 +1,19 @@
 //Cuando se tenga un token se podrá poner las citas del usuario logeado y se cambiara la url
 const url="http://127.0.0.1:3000/appointments/usr/62398dfff2ef62b05643d01d";
 const citas = document.getElementById("citas");
+
+var markedAppointments =[];
+
+function checkboxEvent(checkbox) {
+    if(checkbox.checked) {
+        markedAppointments.push(checkbox.value);
+        
+    } else { 
+        markedAppointments = markedAppointments.filter(id => id !== checkbox.value);
+    }
+    console.log(markedAppointments);
+}
+
 fetch(url).then(res=>{
     if(!res.ok){
         console.log("ERROR");
@@ -24,7 +37,7 @@ fetch(url).then(res=>{
             <li id=${appointment_id}>
                 <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
                     <div class="flex flex-row items-center justify-start">
-                        <input type="checkbox" class="m-2"> 
+                        <input type="checkbox" value=${appointment_id} onchange="checkboxEvent(this)" class="m-2"> 
                         <div id="info-cita">
                             <label id="title" class="mx-3 font-bold"> ${title}</label>
                             <label id="fecha" class="mx-3">${date}</label>
@@ -72,5 +85,21 @@ function deleteAppointment(app_id){
         console.log(data);
         const oldElement = document.getElementById(app_id.value);
         oldElement.parentNode.removeChild(oldElement);
+    });
+}
+
+function deleteSelectedAppointments(){
+    markedAppointments.forEach(app =>{
+        fetch(`http://127.0.0.1:3000/appointments/${app}`,{
+            method: 'DELETE'
+        }).then(res =>{
+            if(res.ok){
+                return res.json();
+            }
+        }).then(data =>{
+            console.log(data);
+            const oldElement = document.getElementById(app);
+            oldElement.parentNode.removeChild(oldElement);
+        });
     });
 }
