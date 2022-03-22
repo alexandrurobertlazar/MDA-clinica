@@ -12,11 +12,14 @@ $(document).ready(function(){
             /**
              * FETCH USER DATA
              */
-            fetch(`http://127.0.0.1:3000/user/login/`,{
+            fetch(`http://localhost:3000/users/login`,{
                 method: "POST",
-                body: {
-                    "email": usuario,
-                    "password": contra
+                body: JSON.stringify({
+                    "email": usuario.value,
+                    "password": contra.value
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
             })
             .then(res => {
@@ -37,6 +40,7 @@ $(document).ready(function(){
 
 //Validación del formulario de login
 function loginValidacion(evento) {
+    evento.preventDefault();
     
     //Variable de control que maneja cuando el usuario y contraeña son válidos.
     var control;
@@ -76,7 +80,6 @@ function loginValidacion(evento) {
 
     //Valor devuelto por la función.
     if(control){
-        evento.preventDefault();
         return false;
     } else {
         return true;
