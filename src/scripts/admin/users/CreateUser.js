@@ -50,7 +50,7 @@ userFormElement.addEventListener('submit', (event) => {
         })
         .then(res => {
             if(!res.ok) {
-                console.log("ERROR");
+                // Mostrar error al usuario
             } else {
                 document.getElementById("submit-error").classList.add("hidden");
                 document.getElementById("success-container").classList.add('flex');

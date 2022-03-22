@@ -16,7 +16,7 @@ if(!user_id) {
 fetch(`http://127.0.0.1:3000/users/${user_id}`)
 .then(res => {
     if(!res.ok) {
-        console.log("ERROR");
+        // Mostrar error al usuario
     } else {
         return res.json();
     }
@@ -40,7 +40,7 @@ async function deleteUser(button) {
     })
     .then(res => {
         if(!res.ok) {
-            console.log("Error");
+            // Mostrar error al usuario
         } else {
             return res.json();
         }

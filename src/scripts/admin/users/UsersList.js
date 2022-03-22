@@ -32,7 +32,7 @@ async function deleteUser(button) {
     })
     .then(res => {
         if(!res.ok) {
-            console.log("Error");
+            // Mostrar error al usuario
         } else {
             return res.json();
         }
@@ -42,7 +42,7 @@ async function deleteUser(button) {
             const oldUserElement = document.getElementById(button.value);
             oldUserElement.parentNode.removeChild(oldUserElement);
         } else {
-            console.log("Error");
+            // Mostrar error al usuario
         }
     });
 }
@@ -57,7 +57,7 @@ deleteMarkedUsersButton.addEventListener('click', (event) => {
             })
             .then(res => {
                 if(!res.ok) {
-                    console.log("Error");
+                    // Mostrar error al usuario
                 } else {
                     return res.json();
                 }
@@ -67,7 +67,7 @@ deleteMarkedUsersButton.addEventListener('click', (event) => {
                     const oldUserElement = document.getElementById(id);
                     oldUserElement.parentNode.removeChild(oldUserElement);
                 } else {
-                    console.log("Error");
+                    // Mostrar error al usuario
                 }
             });
         });
@@ -120,7 +120,7 @@ const userDetailsComponent = (user) => {
 fetch("http://127.0.0.1:3000/users")
 .then(res => {
     if(!res.ok) {
-        console.log("ERROR");
+        // Mostrar error al usuario
     } else {
         return res.json();
     }
