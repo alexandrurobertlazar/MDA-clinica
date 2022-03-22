@@ -20,13 +20,8 @@ fetch(url).then(res=>{
                 return res.json();
             }
         }).then(data =>{
-            console.log(data);
-            console.log(title);
-            console.log(date);
-            console.log(data.name);
-            console.log(appointment_id);
             citas.innerHTML += `
-            <li>
+            <li id=${appointment_id}>
                 <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
                     <div class="flex flex-row items-center justify-start">
                         <input type="checkbox" class="m-2"> 
@@ -46,8 +41,9 @@ fetch(url).then(res=>{
                             Modificar
                         </button>
                         <button
+                        value=${appointment_id}
                         class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2" 
-                        onclick="deleteAppointment()"
+                        onclick="deleteAppointment(this)"
                         >
                             Eliminar
                         </button>
@@ -62,4 +58,19 @@ fetch(url).then(res=>{
 function updateAppointment(data){
     localStorage.setItem("appointmentData", data.value);
     window.open("./updateAppointment.html", "_self");
+}
+
+function deleteAppointment(app_id){
+    console.log(app_id.value);
+    fetch(`http://127.0.0.1:3000/appointments/${app_id.value}`,{
+        method: 'DELETE'
+    }).then(res =>{
+        if(res.ok){
+            return res.json();
+        }
+    }).then(data =>{
+        console.log(data);
+        const oldElement = document.getElementById(app_id.value);
+        oldElement.parentNode.removeChild(oldElement);
+    });
 }
