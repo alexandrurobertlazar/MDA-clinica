@@ -5,16 +5,19 @@
     <link href="../assets/font-awesome/css/brands.css" rel="stylesheet">
     <link href="../assets/font-awesome/css/solid.css" rel="stylesheet">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="/src/scripts/components/nav/nav.js"></script>
+    <script src="/src/scripts/components/footer/footer.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/output.css">
     <title>Clínica ULPGC</title>
 </head>
-<body class="bg-slate-100 w-full">
+<body class="bg-slate-100 w-full"> 
+    <load-nav></load-nav>
     <!--wrapper con todo el body-->
     <div class="flex flex-col md:px-8 lg:px-20 my-4 w-full">
-        <!--navbar-->
-        <div id="navbar"></div>
         <!--wrapper-->
         <div class="bg-white w-full flex flex-col md:flex-row mt-6 rounded-lg shadow-sm p-4 items-center justify-around">
             <div class="w-full md:w-1/3 m-4">
@@ -70,9 +73,8 @@
             <p class="text-2xl font-bold">Dónde nos encontramos</p>
             <div class="mt-4 w-full px-4"><iframe class="w-full h-96 rounded-md" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=Escuela%20de%20Ingenier%C3%ADa%20Inform%C3%A1tica+(Nuestra%20ubicaci%C3%B3n)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
         </div>
-
-        <div class="footer"></div>
     </div>
+    <load-footer></load-footer>
 </body>
 </html>
 

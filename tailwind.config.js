@@ -6,6 +6,7 @@ module.exports = {
         permanent: ['Permanent Marker'], 
       },
     },
+    extend: {},
   },
   plugins: [],
 }
