@@ -6,6 +6,9 @@ module.exports = {
         permanent: ['Permanent Marker'], 
       },
     },
+    screens: {'hpy': {'max': '767px'}
+    },
+    extend: {},
   },
   plugins: [],
 }
