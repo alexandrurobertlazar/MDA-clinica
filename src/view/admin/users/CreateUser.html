@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../styles/output.css">
+    <title>Clínica</title>
+</head>
+<body>
+    <div class="flex flex-col items-center justify-center content-center text-center">
+        <h1 class="text-4xl font-bold">Crear usuario</h1>
+        <h3>Cree un usuario usuario</h3>
+    </div>
+    <div id="form-container" class="flex flex-col items-center">
+        <div id="success-container" class="hidden flex-col items-center m-3 p-3 rounded border shadow">
+            <h2 class="text-xl font-bold">El usuario ha sido creado con éxito</h2>
+            <a
+            href="./UsersList.html"
+            class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2">
+                Volver atrás
+            </a>
+        </div>
+        <form
+        id="user-form"
+        class="w-3/4 flex flex-col justify-center content-center items-center m-3 p-2.5 shadow rounded">
+            <div id="name-container" class="flex flex-col items-center">
+                <label class="font-bold m-1" for="name">Nombre</label>
+                <input
+                class="user-input"
+                type="text" name="name" id="name" required>
+                <h4 id="name-error" class="font-light text-red-600 hidden">El nombre no es válido</h4> 
+            </div>
+            <div id="email-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="email">Email</label>
+                <input 
+                class="user-input"
+                type="email" name="email" id="email" required>
+                <h4 id="email-error" class="font-light text-red-600 hidden">El email no es válido</h4> 
+            </div>
+            <div id="phone-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="phone">Teléfono</label>
+                <input
+                class="user-input"
+                type="tel" name="phone" id="phone" required>
+                <h4 id="phone-error" class="font-light text-red-600 hidden">El número no es válido</h4> 
+            </div>
+            <div id="role-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="role">Rol</label>
+                <select name="role" id="role" class="border rounded p-1 focus:outline-blue-500" required>
+                    <option value="paciente">Paciente</option>
+                    <option value="especialista">Especialista</option>
+                    <option value="auxiliar">Auxiliar</option>
+                    <option value="enfermero">Enfermero</option>
+                    <option value="admin">Administrador</option>
+                </select>
+            </div>
+            <div id="password-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="password">Contraseña</label>
+                <input
+                class="user-input"
+                type="password" name="password" id="password" required>
+                <h4 id="password-error" class="font-light text-red-600 hidden">La contraseña no es válida</h4>
+            </div>
+            <div id="password2-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="password-confirmation">Confirmar contraseña</label>
+                <input
+                class="user-input"
+                type="password" name="password-confirmation" id="password-confirmation" required>
+                <h4 id="password2-error" class="font-light text-red-600 hidden">Las contraseñas no coinciden</h4>
+            </div>
+            <div id="submit-container" class="flex flex-col items-center">
+                <button 
+                class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2"
+                type="submit">
+                    Actualizar
+                </button>
+                <h4 id="submit-error" class="font-light text-red-600 hidden">Revise todos los campos</h4> 
+            </div>
+        </form>
+    </div>
+    <script src="../../../scripts/admin/users/CreateUser.js"></script>
+</body>
+</html>
