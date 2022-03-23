@@ -66,23 +66,20 @@ form.addEventListener('submit', (event) =>{
 
 date.addEventListener('change', (event) =>{
     const value = event.target.value;
-    console.log(value);
     let dateNow = Date.now();
     let hoy = new Date(dateNow);
     if(Date.parse(value) <= Date.parse(hoy.toISOString())){
-        console.log("Vacio");
         validationError.date = true;
-        document.getElementById("title-error").classList.remove('hidden');
+        document.getElementById("date-error").classList.remove('hidden');
     } else{
         validationError.date=false;
         appointmentData.date = value;
-        document.getElementById("title-error").classList.add('hidden');
+        document.getElementById("date-error").classList.add('hidden');
     }
 });
 
 desc.addEventListener('change', (event) =>{
     const value = event.target.value;
-    console.log(value);
     if(value.length<5){
         validationError.desc = true;
         document.getElementById("desc-error").classList.remove('hidden');

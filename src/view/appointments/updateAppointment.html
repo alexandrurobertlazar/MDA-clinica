@@ -34,10 +34,12 @@
             <div id="date">
                 <label class="font-bold m-1 p-2"> Date: </label>
                 <input id="date-selector" type="datetime-local" value="">
+                <h4 id="date-error" class="font-light text-red-600 hidden">Fecha incorrecta</h4>
             </div>
             <div id="description">
                 <label class="font-bold m-1 p-2">Descripción: </label>
                 <input id="appointment-desc" type="text">
+                <h4 id="desc-error" class="font-light text-red-600 hidden">Descripción demasiado corta</h4>
             </div>
             <div id="submit-container" class="flex flex-col items-center">
                 <button
@@ -46,6 +48,7 @@
                 >
                     Actualizar
                 </button>
+                <h4 id="submit-error" class="font-light text-red-600 hidden">Complete correctamente los datos</h4>
             </div>
         </form>
     </div>

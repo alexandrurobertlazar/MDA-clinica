@@ -18,12 +18,19 @@
     </div>
     <div class="flex justify-center mt-5">
         <button
+        class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2" 
+        onclick="createAppointment()"
+        >
+            Crear cita
+        </button>
+        <button
         class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2" 
         onclick="deleteSelectedAppointments()"
         >
             Eliminar citas seleccionadas
         </button>
     </div>
+
     
     <script src="./appointments.js"></script>
 </body>

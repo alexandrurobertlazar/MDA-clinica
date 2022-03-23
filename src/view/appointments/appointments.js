@@ -73,6 +73,10 @@ function updateAppointment(data){
     window.open("./updateAppointment.html", "_self");
 }
 
+function createAppointment(){
+    window.open("./createAppointment.html", "_self");
+}
+
 function deleteAppointment(app_id){
     console.log(app_id.value);
     fetch(`http://127.0.0.1:3000/appointments/${app_id.value}`,{
