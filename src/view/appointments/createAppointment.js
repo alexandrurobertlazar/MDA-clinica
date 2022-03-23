@@ -33,11 +33,6 @@ fetch("http://127.0.0.1:3000/users/role/especialista").then(res =>{
 
 form.addEventListener('submit', (event) =>{
     event.preventDefault();
-    console.log(type.value);
-    console.log(especialistSelect.value);
-    console.log(date.value);
-    console.log(desc.value);
-
     let validation = true;
     Object.entries(validationError).forEach(error =>{
         const [, value] = error;
@@ -63,6 +58,7 @@ form.addEventListener('submit', (event) =>{
             } else{
                 document.getElementById("submit-error").classList.add("hidden");
                 form.classList.add('hidden');
+                window.open("./appointments.html", "_self");
             }
         });
     }

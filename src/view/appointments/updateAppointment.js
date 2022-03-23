@@ -1,8 +1,5 @@
 const citaId = localStorage.getItem("appointmentData");
 localStorage.removeItem("appointmentData");
-console.log(citaId);
-//Hacer una llamada a la tabla de usuarios para que devuelva todos los especialistas 
-//y ponerlos como opciones en el select
 const especialistSelector = document.getElementById("especialist-select");
 const date=document.getElementById("date-selector");
 const desc = document.getElementById("appointment-desc");
@@ -32,7 +29,6 @@ fetch(url).then(res=>{
     date.setAttribute("value", strDate);
 
     //Descripción
-    console.log(data.desc);
     desc.value=data.desc;
 
     //Especialista original
@@ -55,5 +51,5 @@ fetch("http://127.0.0.1:3000/users/role/especialista").then(res =>{
 
 form.addEventListener('submit', (event) =>{
     event.preventDefault();
-    console.log("hola");;
+    console.log("hola");
 });
