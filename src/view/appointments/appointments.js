@@ -1,5 +1,6 @@
 //Cuando se tenga un token se podrá poner las citas del usuario logeado y se cambiara la url
-const url="http://127.0.0.1:3000/appointments/usr/62398dfff2ef62b05643d01d";
+const user_id = localStorage.getItem("user_id");
+const url =`http://127.0.0.1:3000/appointments/usr/${user_id}`
 const citas = document.getElementById("citas");
 
 var markedAppointments =[];

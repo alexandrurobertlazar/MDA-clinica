@@ -3,6 +3,7 @@ const type = document.getElementById("type");
 const especialistSelect = document.getElementById("especialist-select");
 const date = document.getElementById("date-selector");
 const desc = document.getElementById("appointment-desc");
+const pacient = localStorage.getItem("user_id");
 
 const appointmentData = {
     title: "",
@@ -44,7 +45,7 @@ form.addEventListener('submit', (event) =>{
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
         appointmentData.title = type.value;
-        appointmentData.pacient = "62398dfff2ef62b05643d01d";
+        appointmentData.pacient = pacient;
         appointmentData.especialist = especialistSelect.value;
         fetch(`http://127.0.0.1:3000/appointments`,{
             method: 'POST',
