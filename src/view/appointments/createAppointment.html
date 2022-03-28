@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/styles/output.css">
+    <title>Clínica</title>
+</head>
+<body>
+    <div id="title" class="text-4xl font-bold my-3 ml-10">
+        <h1>Creación de Cita</h1>
+    </div>
+    <div id="app-form" class="flex flex-wrap items-center justify-around">
+        <form
+        id="appointment-form"
+        class="w-3/4 flex flex-wrap justify-around items-center m-3 p-2.5 shadow rounded">
+            <div id="title" class="flex justify-around">
+                <label class="font-bold m-1 p-2">Tipo de cita: </label>
+                <select id="type" name="appointment-type">
+                    <option value="Analitica"> Analítica</option>
+                    <option value="Enfermeria">Enfermería</option>
+                    <option value="Cita con medico">Cita con médico</option>
+                </select>
+            </div>
+            
+            <div id="especialist" class="flex justify-around">
+                <label class="font-bold m-1 p-2">Especialista: </label>
+                <select id="especialist-select" name="appointment-especialist">
+                </select>
+            </div>
+
+            <div id="date">
+                <label class="font-bold m-1 p-2"> Date: </label>
+                <input id="date-selector" type="datetime-local" required value="">
+                <h4 id="date-error" class="font-light text-red-600 hidden">Fecha incorrecta</h4>
+            </div>
+
+            <div id="description">
+                <label class="font-bold m-1 p-2">Descripción: </label>
+                <input id="appointment-desc" type="text" required>
+                <h4 id="desc-error" class="font-light text-red-600 hidden">Descripción demasiado corta</h4>
+            </div>
+
+            <div id="submit-container" class="flex flex-col items-center">
+                <button
+                type="submit"
+                class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2"
+                >
+                    Enviar
+                </button>
+                <h4 id="submit-error" class="font-light text-red-600 hidden">Complete correctamente los datos</h4>
+            </div>
+        </form>
+    </div>
+
+    <script src="./createAppointment.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="/src/scripts/components/nav/nav.js"></script>
+    <script src="/src/scripts/components/footer/footer.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/styles/output.css">
+    <title>Clínica</title>
+</head>
+<body>
+    <load-nav></load-nav>
+    <div id="title" class="text-4xl font-bold my-3 ml-10">
+        <h1>Citas</h1>
+    </div>
+    <div id="citas" class="list-none">
+        <ul id="citas">
+        </ul>
+        
+    </div>
+    <div class="flex justify-center mt-5">
+        <button
+        class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2" 
+        onclick="createAppointment()"
+        >
+            Crear cita
+        </button>
+        <button
+        class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2" 
+        onclick="deleteSelectedAppointments()"
+        >
+            Eliminar citas seleccionadas
+        </button>
+    </div>
+
+    <load-footer></load-footer>
+    <script src="./appointments.js"></script>
+</body>
+</html>
