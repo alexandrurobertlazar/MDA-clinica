@@ -5,6 +5,9 @@ module.exports = {
       fontFamily: {
         permanent: ['Permanent Marker'], 
       },
+      screens: {
+        'hpy': {'max': '767px'}
+      },
     },
     extend: {},
   },
