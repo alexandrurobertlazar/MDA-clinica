@@ -45,7 +45,7 @@ form.addEventListener('submit', (event) =>{
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
         appointmentData.title = type.value;
-        appointmentData.pacient = pacient;
+        appointmentData.patient = pacient;
         appointmentData.especialist = especialistSelect.value;
         fetch(`http://127.0.0.1:3000/appointments`,{
             method: 'POST',
