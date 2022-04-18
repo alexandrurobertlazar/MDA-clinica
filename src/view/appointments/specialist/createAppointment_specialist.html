@@ -26,7 +26,7 @@
             </div>
             <div class="flex flex-col items-center m-2">
                 <label class="font-bold text-lg" for="appointment-patient">Paciente</label>
-                <select id="patient-select" name="appointment-patient">
+                <select class="p-2 rounded w-28 max-w-xs" id="patient-select" name="appointment-patient">
                 </select>
             </div>
 
@@ -48,6 +48,7 @@
                 type="submit">
                     Añadir cita
                 </button>
+                <h4 id="submit-error" class="font-light text-red-600 hidden">Complete correctamente los datos</h4>
             </div>
         </form>
     </div>

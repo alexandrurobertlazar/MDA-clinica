@@ -11,7 +11,7 @@ const appointmentListComponent = (appointment, patient) => {
                         ${appointment.title}
                     </h2>
                     <p class="font-light text-sm whitespace-nowrap overflow-hidden text-ellipsis">
-                        ESTO ES UN TEXTO SUPER LARGO PORFA HAZ OVERFLOW :(
+                        ${appointment.desc}
                     </p>
                 </div>
                 <div class="flex flex-col items-end w-1/2">

@@ -11,7 +11,7 @@ const user = localStorage.getItem("user_id");
 const appointmentData = {
     title: "",
     patient: "",
-    specialist: "",
+    specialist: localStorage.getItem("user_id"),
     date: "",
     desc: ""
 }
@@ -24,17 +24,14 @@ const validationError = {
     desc: false
 }
 
-const validationHelper = (text, max, min) => {
-    if(text.length < min) {
-        return `La longitud de este texto debe ser mayor de ${max} caracteres`;
-    } else if(text.length > max) {
-        return `La longitud de este texto debe ser menor de ${min} caracteres`;
+fetch("http://127.0.0.1:3000/users/role/patient").then(res =>{
+    if(res.ok){
+        return res.json();
     }
-    return "";
-}
-
-appointmentPatient.addEventListener("change", (event) => {
-    appointmentData.patient = event.target.value;
+}).then(data =>{
+    data.forEach(especialist => {
+        appointmentPatient.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
+    });
 });
 
 appointmentDate.addEventListener('change', (event) =>{
@@ -75,6 +72,23 @@ form.addEventListener('submit', (event) =>{
     if(!validation){
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
-        
+        appointmentData.title = appointmentType.value;
+        appointmentData.patient = appointmentPatient.value;
+
+        fetch(`http://127.0.0.1:3000/appointments`,{
+            method: 'POST',
+            body: JSON.stringify(appointmentData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            if(!res.ok){
+                return "ERROR";
+            } else{
+                document.getElementById("submit-error").classList.add("hidden");
+                form.classList.add('hidden');
+                window.open("/src/view/appointments/specialist/appointments_specialist.html", "_self");
+            }
+        });
     }
 });
