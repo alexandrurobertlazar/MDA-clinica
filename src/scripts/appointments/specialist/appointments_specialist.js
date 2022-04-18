@@ -1,5 +1,10 @@
 const appointmentsContainer = document.getElementById("appointments-container")
 
+// navigate to update appointment
+function navigateToUpdate(button) {
+    localStorage.setItem('appointment_id', button.value);
+    window.open("/src/view/appointments/specialist/updateAppointment_specialist.html", "_self");
+}
 
 // Appointment component
 const appointmentListComponent = (appointment, patient) => {
@@ -21,6 +26,20 @@ const appointmentListComponent = (appointment, patient) => {
                     <h3 class="m-1 font-light">
                         Fecha: ${appointment.date}
                     </h3>
+                </div>
+                <div class="flex flex-col md:flex-row">
+                    <button
+                    value=${appointment.id}
+                    onclick=navigateToUpdate(this)
+                    class="text-blue-500 underline md:no-underline md:bg-blue-500 md:text-white font-bold px-3 py-2 rounded md:m-2">
+                        Editar cita
+                    </button>
+                    <button
+                    value=${appointment.id}
+                    onclick="deleteUser(this)"
+                    class="text-red-500 underline md:no-underline md:bg-red-500 md:text-white font-bold px-3 py-2 rounded md:m-2">
+                        Eliminar cita
+                    </button>
                 </div>
             </div>
     `);

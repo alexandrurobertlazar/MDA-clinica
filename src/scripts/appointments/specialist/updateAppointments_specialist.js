@@ -6,8 +6,6 @@ const appointmentPatient = document.getElementById("patient-select");
 const appointmentDate = document.getElementById("date-selector");
 const appointmentDescription = document.getElementById("description");
 
-const user = localStorage.getItem("user_id");
-
 const appointmentData = {
     title: "",
     patient: "",
@@ -23,6 +21,26 @@ const validationError = {
     date: false,
     desc: false
 }
+
+// fetch old data
+const appointment_id = localStorage.getItem('appointment_id');
+fetch(`http://127.0.0.1:3000/appointments/${appointment_id}`)
+.then(res => {
+    if(res.ok) {
+        return res.json()
+    }
+})
+.then(data => {
+    appointmentData.title =data.title;
+    appointmentData.date = data.date;
+    appointmentData.desc = data.desc;
+    appointmentData.patient = data.patient;
+    appointmentData.specialist = data.specialist;
+
+    appointmentType.value = data.title;
+    appointmentDescription.value = data.desc
+    // appointmentDate.value = new Date(data.date).toISOString();
+});
 
 fetch("http://127.0.0.1:3000/users/role/patient").then(res =>{
     if(res.ok){
@@ -73,10 +91,9 @@ form.addEventListener('submit', (event) =>{
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
         appointmentData.title = appointmentType.value;
-        appointmentData.patient = appointmentPatient.value;
 
         fetch(`http://127.0.0.1:3000/appointments`,{
-            method: 'PUT',
+            method: 'POST',
             body: JSON.stringify(appointmentData),
             headers: {
                 'Content-Type': 'application/json'
