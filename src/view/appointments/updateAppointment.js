@@ -8,16 +8,16 @@ let especialistOrigin = "";
 
 const cita ={
     title: "",
-    pacient: "",
-    especialist: "",
+    patient: "",
+    specialist: "",
     date: "",
     desc: ""
 }
 
 const validationError ={
     title: false,
-    pacient: false,
-    especialist: false,
+    patient: false,
+    specialist: false,
     date: false,
     desc: false
 }
@@ -41,16 +41,16 @@ fetch(url).then(res=>{
     desc.value=data.desc;
 
     //Especialista original
-    especialistOrigin = data.especialist;
+    especialistOrigin = data.specialist;
 
     cita.title =data.title;
     cita.date = data.date;
     cita.desc = data.desc;
-    cita.pacient = data.pacient;
-    cita.especialist = data.especialist;
+    cita.patient = data.patient;
+    cita.specialist = data.specialist;
 })
 
-fetch("http://127.0.0.1:3000/users/role/especialista").then(res =>{
+fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
     if(res.ok){
         return res.json();
     }

@@ -3,26 +3,28 @@ const type = document.getElementById("type");
 const especialistSelect = document.getElementById("especialist-select");
 const date = document.getElementById("date-selector");
 const desc = document.getElementById("appointment-desc");
-const pacient = localStorage.getItem("user_id");
+const patient = localStorage.getItem("user_id");
+
+const horas = getHorasDisponibles();
 
 const appointmentData = {
     title: "",
-    pacient: "",
-    especialist: "",
+    patient: "",
+    specialist: "",
     date: "",
     desc: ""
 }
 
 const validationError ={
     title: false,
-    pacient: false,
-    especialist: false,
+    patient: false,
+    specialist: false,
     date: false,
     desc: false
 }
 
 
-fetch("http://127.0.0.1:3000/users/role/especialista").then(res =>{
+fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
     if(res.ok){
         return res.json();
     }
@@ -45,8 +47,8 @@ form.addEventListener('submit', (event) =>{
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
         appointmentData.title = type.value;
-        appointmentData.pacient = pacient;
-        appointmentData.especialist = especialistSelect.value;
+        appointmentData.patient = patient;
+        appointmentData.specialist = especialistSelect.value;
         fetch(`http://127.0.0.1:3000/appointments`,{
             method: 'POST',
             body: JSON.stringify(appointmentData),
@@ -90,3 +92,17 @@ desc.addEventListener('change', (event) =>{
         document.getElementById("desc-error").classList.add('hidden');
     }
 });
+
+/* Cambios para las fechas:
+*   Idea: 
+*       Interfaz: sustituir input datetime-local por un selector de un día y otro selector de horas. Añadirle 
+*           evento change al selector del día para que cargue las horas disponibles de ese día teniendo en cuenta el 
+*           especialista que se encuentra en ese momento seleccionado en el otro selector.
+*
+*       Para cargar las horas: tener en un array la respuesta de la llamada a un método del back que devuelva todas
+*           las horas en las que tendrá consulta un especialista en un día en concreto. Luego, quitar de las horas
+*           disponibles el resultado de dicho array. Las horas de consulta serán cada 15 minutos.
+*/
+function getHorasDisponibles(){
+    return null;
+}
