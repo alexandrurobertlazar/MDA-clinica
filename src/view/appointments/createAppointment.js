@@ -1,34 +1,34 @@
 const form = document.getElementById("app-form");
 const type = document.getElementById("type");
-const especialistSelect = document.getElementById("especialist-select");
+const specialistSelect = document.getElementById("especialist-select");
 const date = document.getElementById("date-selector");
 const desc = document.getElementById("appointment-desc");
-const pacient = localStorage.getItem("user_id");
+const patient = localStorage.getItem("user_id");
 
 const appointmentData = {
     title: "",
-    pacient: "",
-    especialist: "",
+    patient: "",
+    specialist: "",
     date: "",
     desc: ""
 }
 
 const validationError ={
     title: false,
-    pacient: false,
-    especialist: false,
+    patient: false,
+    specialist: false,
     date: false,
     desc: false
 }
 
 
-fetch("http://127.0.0.1:3000/users/role/especialista").then(res =>{
+fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
     if(res.ok){
         return res.json();
     }
 }).then(data =>{
-    data.forEach(especialist => {
-        especialistSelect.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
+    data.forEach(specialist => {
+        specialistSelect.innerHTML+=`<option value="${specialist.id}"> ${specialist.name} </option>`
     });
 });
 
@@ -45,8 +45,8 @@ form.addEventListener('submit', (event) =>{
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
         appointmentData.title = type.value;
-        appointmentData.patient = pacient;
-        appointmentData.especialist = especialistSelect.value;
+        appointmentData.patient = patient;
+        appointmentData.specialist = specialistSelect.value;
         fetch(`http://127.0.0.1:3000/appointments`,{
             method: 'POST',
             body: JSON.stringify(appointmentData),

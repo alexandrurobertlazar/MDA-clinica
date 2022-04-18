@@ -29,7 +29,7 @@ fetch(url).then(res=>{
         let dateSplitted = dateRaw.split("T");
         let date = dateSplitted[0] + "  " + dateSplitted[1];
         let appointment_id = appointment.id;
-        fetch(`http://127.0.0.1:3000/users/${appointment.especialist}`).then(res =>{
+        fetch(`http://127.0.0.1:3000/users/${appointment.specialist}`).then(res =>{
             if(res.ok){
                 return res.json();
             }

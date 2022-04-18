@@ -29,8 +29,8 @@ fetch("http://127.0.0.1:3000/users/role/patient").then(res =>{
         return res.json();
     }
 }).then(data =>{
-    data.forEach(especialist => {
-        appointmentPatient.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
+    data.forEach(specialist => {
+        appointmentPatient.innerHTML+=`<option value="${specialist.id}"> ${specialist.name} </option>`
     });
 });
 

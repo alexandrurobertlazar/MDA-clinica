@@ -1,23 +1,23 @@
 const citaId = localStorage.getItem("appointmentData");
 localStorage.removeItem("appointmentData");
-const especialistSelector = document.getElementById("especialist-select");
+const specialistSelector = document.getElementById("especialist-select");
 const date = document.getElementById("date-selector");
 const desc = document.getElementById("appointment-desc");
 const form = document.getElementById("appointment-form");
-let especialistOrigin = "";
+let specialistOrigin = "";
 
 const cita ={
     title: "",
-    pacient: "",
-    especialist: "",
+    patient: "",
+    specialist: "",
     date: "",
     desc: ""
 }
 
 const validationError ={
     title: false,
-    pacient: false,
-    especialist: false,
+    patient: false,
+    specialist: false,
     date: false,
     desc: false
 }
@@ -41,25 +41,25 @@ fetch(url).then(res=>{
     desc.value=data.desc;
 
     //Especialista original
-    especialistOrigin = data.especialist;
+    specialistOrigin = data.specialist;
 
     cita.title =data.title;
     cita.date = data.date;
     cita.desc = data.desc;
-    cita.pacient = data.pacient;
-    cita.especialist = data.especialist;
+    cita.patient = data.patient;
+    cita.specialist = data.specialist;
 })
 
-fetch("http://127.0.0.1:3000/users/role/especialista").then(res =>{
+fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
     if(res.ok){
         return res.json();
     }
 }).then(data =>{
-    data.forEach(especialist => {
-        if(especialist.id === especialistOrigin){
-            especialistSelector.innerHTML+= `<option selected value="${especialist.id}"> ${especialist.name} </option>`
+    data.forEach(specialist => {
+        if(specialist.id === specialistOrigin){
+            specialistSelector.innerHTML+= `<option selected value="${specialist.id}"> ${specialist.name} </option>`
         } else{
-            especialistSelector.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
+            specialistSelector.innerHTML+=`<option value="${specialist.id}"> ${specialist.name} </option>`
         }
     });
 });
