@@ -78,7 +78,7 @@ deleteMarkedUsersButton.addEventListener('click', (event) => {
 const userDetailsComponent = (user) => {
     return (`
         <li id=${user.id}>
-            <div class="flex flex-col justify-center md:flex-row md:justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
+            <div class="flex flex-col justify-center md:flex-row md:justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5 bg-white">
                 <div class="flex flex-col items-center md:flex-row h-full">
                     <div class="sm:m-0 md:m-2">
                         <input type="checkbox" name=${user.email} value=${user.id} onchange="checkboxEvent(this)">
