@@ -24,13 +24,16 @@ fetch(url).then(res=>{
     }
 })
 .then(data =>{
-    
+    if(data.length == 0){
+        noCitas.innerHTML=`<h1 class="text-center text-xl font-bold">No tiene citas<h1>`
+    } else{
         noCitas.innerHTML='';
         data.forEach(appointment => {
             let title = appointment.title;
-            let dateRaw = appointment.date.substring(0, appointment.date.length-8);
-            let dateSplitted = dateRaw.split("T");
-            let date = dateSplitted[0] + "  " + dateSplitted[1];
+            let dateRaw = appointment.date;
+            let [year, month, day] = dateRaw.split("-");
+            let date = day+"-"+month+"-"+year;
+            let hour = appointment.hour;
             let appointment_id = appointment.id;
             fetch(`http://127.0.0.1:3000/users/${appointment.specialist}`).then(res =>{
                 if(res.ok){
@@ -44,7 +47,8 @@ fetch(url).then(res=>{
                             <input type="checkbox" value=${appointment_id} onchange="checkboxEvent(this)" class="m-2"> 
                             <div id="info-cita">
                                 <label id="title" class="mx-3 font-bold"> ${title}</label>
-                                <label id="fecha" class="mx-3">${date}</label>
+                                <label id="hora" class="mx-2">${hour}</label>
+                                <label id="fecha" class="mx-2">${date}</label>
                                 <label id="docLabel" class="mx-3 font-bold">Especialista: </label>
                                 <label id="doc" class="mx-3">  ${data.name} </label>
                             </div>
@@ -70,7 +74,7 @@ fetch(url).then(res=>{
                 `;
             });
         });
-        
+    }
 });
 
 function updateAppointment(data){
