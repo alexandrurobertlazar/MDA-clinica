@@ -68,7 +68,6 @@ fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
         
         //Fecha
         dateSelector.setAttribute("value", data.date);
-        console.log(data.hour);
         
         changeHourSelector(undefined);
         hourSelector.innerHTML+=`<option selected value="${data.hour}"> ${data.hour} </option>`;

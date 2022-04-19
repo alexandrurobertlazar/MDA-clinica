@@ -13,12 +13,10 @@ function checkboxEvent(checkbox) {
     } else { 
         markedAppointments = markedAppointments.filter(id => id !== checkbox.value);
     }
-    console.log(markedAppointments);
 }
 
 fetch(url).then(res=>{
     if(!res.ok){
-        console.log("ERROR");
     } else{
         return res.json();
     }
@@ -29,7 +27,6 @@ fetch(url).then(res=>{
     } else{
         noCitas.innerHTML='';
         data.sort((a, b) => {
-            console.log("SORT");
             //Dia
             var [day1, month1, year1] = a.date.split('-');
             var dayA = parseInt(day1)
@@ -57,7 +54,6 @@ fetch(url).then(res=>{
                     if(dayA < dayB) return -1;
                     if(dayA > dayB) return 1;
                     if(dayA === dayB) {
-                        console.log("ENTRE son dias iguales");
                         if(hourA < hourB) return -1;
                         if(hourA > hourB) return 1;
                         if(hourA === hourB){
