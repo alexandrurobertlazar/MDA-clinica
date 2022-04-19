@@ -123,7 +123,7 @@ hourSelector.addEventListener('change', (event)=>{cita.hour = event.target.value
 
 dateSelector.addEventListener('change', (event)=>{
     changeHourSelector(event);
-    cita.specialist = event.target.value;
+    cita.date = event.target.value;
 });
 
 especialistSelector.addEventListener('change', (event)=>{

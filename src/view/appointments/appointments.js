@@ -28,6 +28,48 @@ fetch(url).then(res=>{
         noCitas.innerHTML=`<h1 class="text-center text-xl font-bold">No tiene citas<h1>`
     } else{
         noCitas.innerHTML='';
+        data.sort((a, b) => {
+            console.log("SORT");
+            //Dia
+            var [day1, month1, year1] = a.date.split('-');
+            var dayA = parseInt(day1)
+            var monthA = parseInt(month1);
+            var yearA = parseInt(year1);
+            var [day2, month2, year2] = b.date.split('-');
+            var dayB = parseInt(day2)
+            var monthB = parseInt(month2);
+            var yearB = parseInt(year2);
+
+            //Hora
+            var [hour1, min1] = a.hour.split(':');
+            var hourA = parseInt(hour1);
+            var minA = parseInt(min1);
+            var [hour2, min2] = b.hour.split(':');
+            var hourB = parseInt(hour2);
+            var minB = parseInt(min2);
+
+            if(yearA < yearB) return -1;
+            if(yearA > yearB) return 1;
+            if(yearA === yearB) {
+                if(monthA < monthB) return -1;
+                if(monthA > monthB) return 1;
+                if(monthA === monthB) {
+                    if(dayA < dayB) return -1;
+                    if(dayA > dayB) return 1;
+                    if(dayA === dayB) {
+                        console.log("ENTRE son dias iguales");
+                        if(hourA < hourB) return -1;
+                        if(hourA > hourB) return 1;
+                        if(hourA === hourB){
+                            if(minA < minB) return -1;
+                            if(minA > minB) return 1;
+                        }
+                    }
+                };
+            };
+            return 0;
+        });
+
         data.forEach(appointment => {
             let title = appointment.title;
             let dateRaw = appointment.date;
