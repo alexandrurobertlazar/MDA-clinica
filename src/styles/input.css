@@ -1,4 +1,9 @@
 @tailwind base;
 @tailwind components;
+.button-blue { 
+    @apply font-light bg-blue-600 text-white px-4 rounded-md text-center p-2 hover:font-bold transition-all;
+}
+.user-input {
+    @apply border rounded p-1 focus:outline-blue-500 focus:scale-105 transition-all duration-500
+}
 @tailwind utilities;
-
