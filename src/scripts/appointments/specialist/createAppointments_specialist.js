@@ -76,7 +76,7 @@ form.addEventListener('submit', (event) =>{
         appointmentData.patient = appointmentPatient.value;
 
         fetch(`http://127.0.0.1:3000/appointments`,{
-            method: 'PUT',
+            method: 'POST',
             body: JSON.stringify(appointmentData),
             headers: {
                 'Content-Type': 'application/json'
