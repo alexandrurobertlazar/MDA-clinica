@@ -3,11 +3,29 @@ const sortAppointmentsSelect = document.getElementById("sort-appointments")
 
 var appointmentList = [];
 
-
 // navigate to update appointment
 function navigateToUpdate(button) {
     localStorage.setItem('appointment_id', button.value);
     window.open("/src/view/appointments/specialist/updateAppointment_specialist.html", "_self");
+}
+
+// delete appointment function
+function deleteAppointment(button) {
+    const { value } = button;
+    fetch(`http://127.0.0.1:3000/appointments/${value}`, {
+        method: 'DELETE'
+    })
+    .then(res => {
+        if(res.ok) {
+            return res.json()
+        }
+    }).then(data => {
+        if(data) {
+            appointmentList = appointmentList.filter(({appointment}) => (appointment.id !== value));
+            appointmentsContainer.innerHTML = '';
+            appointmentList.forEach(({appointment, patient}) => appointmentsContainer.innerHTML += appointmentListComponent(appointment, patient));
+        }
+    });
 }
 
 // sort appointments function
@@ -61,7 +79,7 @@ const appointmentListComponent = (appointment, patient) => {
                     </button>
                     <button
                     value=${appointment.id}
-                    onclick="deleteUser(this)"
+                    onclick="deleteAppointment(this)"
                     class="text-red-500 underline md:no-underline md:bg-red-500 md:text-white font-bold px-3 py-2 rounded md:m-2">
                         Eliminar cita
                     </button>
