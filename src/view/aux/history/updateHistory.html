@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../styles/output.css">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="/src/scripts/components/nav/nav.js"></script>
+    <script src="/src/scripts/components/footer/footer.js"></script>
+    <title>Clínica</title>
+</head>
+<body class="bg-slate-100">
+    <load-nav></load-nav>
+    <div class="flex flex-col items-center justify-center content-center text-center my-4">
+        <h1 class="text-4xl font-bold mt-5">Editar historial</h1>
+        <h3 id="subtitle" class="mt-2"></h3>
+    </div>
+    <div id="form-container" class="flex flex-col items-center">
+        <div id="success-container" class="hidden flex-col items-center m-3 p-3 rounded border shadow">
+            <h2 class="text-xl font-bold">El historial ha sido actualizado con éxito</h2>
+            <a href="./patientHistory.html" class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2">
+                Volver atrás
+            </a>
+        </div>
+        <form id="user-form" class="w-3/4 mb-16 flex flex-col justify-center content-center items-center m-3 p-2.5 shadow rounded">
+
+            <div id="subject-container" class="flex flex-col items-center">
+                <label class="font-bold m-1" for="subject">Prueba Clínica</label>
+                <input class="history-input" type="text" name="subject" id="subject" required>
+                <h4 id="subject-error" class="font-light text-red-600 hidden">La prueba clínica no es válida</h4> 
+            </div>
+
+            <div id="description-container" class="flex flex-col items-center m-2">
+                <label class="font-bold m-1" for="description">Descripción de la prueba clínica</label>
+                <textarea class="history-textarea h-60" name="description" id="description" required></textarea>
+                <h4 id="description-error" class="font-light text-red-600 hidden">La descripción no es válida</h4> 
+            </div>
+           
+           
+            <div id="submit-container" class="flex flex-col items-center">
+                <button 
+                class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2"
+                type="submit">
+                    Actualizar
+                </button>
+                <h4 id="submit-error" class="font-light text-red-600 hidden">Revise todos los campos</h4> 
+            </div>
+        </form>
+    </div>
+    <load-footer></load-footer>
+    <script src="../../../scripts/aux/history/updateHistory.js"></script>
+</body>
+</html>
