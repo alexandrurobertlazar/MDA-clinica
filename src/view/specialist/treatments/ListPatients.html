@@ -16,9 +16,10 @@
 </head>
 <body class="bg-slate-100">
     <load-nav></load-nav>
+  
     <div class="mt-5">
-    <h1 id="patient-name" class="text-4xl font-bold text-center"></h1>
-    <h3 id="subtitle" class="mt-2 text-center"></h3>
+    <h1 class="text-4xl font-bold text-center">Mis Pacientes</h1>
+    <h3 class="mt-2 text-center">En esta página podrá ver y administrar los tratamientos de sus pacientes.</h3>
     <div class="p-6 flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -27,20 +28,20 @@
                 <thead class="bg-white border-b">
                     <tr class="text-center ">
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                            Número de tratamiento
+                            Nombre
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                            Tratamiento
+                            Correo
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                            Descripción
+                            Teléfono
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
                             Acción
                         </th>
                     </tr>
                 </thead>
-                <tbody id="patient-treatment">
+                <tbody id="patient-list">
                 </tbody>
               </table>
             </div>
