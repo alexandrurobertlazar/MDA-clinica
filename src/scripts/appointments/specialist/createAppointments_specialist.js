@@ -27,13 +27,42 @@ const validationError = {
     desc: false
 }
 
+// function to load the available hours
+function changeHourSelector() {
+    let specialist_id = localStorage.getItem("user_id");
+    let patient_id = appointmentPatient.value;
+    let date = appointmentDate.value;
+    var hours = [];
+    fetch(`http://127.0.0.1:3000/appointments/${specialist_id}&${date}`).then(res=>{
+        if(res.ok){
+            return res.json();
+        }
+    })
+    .then(data => hours = data)
+    .then(() => {
+        fetch(`http://127.0.0.1:3000/appointments/patient/${patient_id}&${date}`)
+        .then(res => {
+            if (res.ok) return res.json();
+        })
+        .then(data => {
+            hours = hours.filter((h) => data.includes(h));
+            console.log(hours);
+            hours.forEach(hour => {
+                appointmentHour.innerHTML += `<option value="${hour}"> ${hour} </option>`;
+            })
+        });
+    });
+}
+
+
+// Fetch the list of patients
 fetch("http://127.0.0.1:3000/users/role/patient").then(res =>{
     if(res.ok){
         return res.json();
     }
 }).then(data =>{
-    data.forEach(specialist => {
-        appointmentPatient.innerHTML+=`<option value="${specialist.id}"> ${specialist.name} </option>`
+    data.forEach(patient => {
+        appointmentPatient.innerHTML+=`<option value="${patient.id}"> ${patient.name} </option>`
     });
 });
 
@@ -48,6 +77,7 @@ appointmentDate.addEventListener('change', (event) =>{
         validationError.date=false;
         appointmentData.date = value;
         document.getElementById("date-error").classList.add('hidden');
+        changeHourSelector();
     }
 });
 
@@ -74,9 +104,11 @@ form.addEventListener('submit', (event) =>{
     });
     if(!validation){
         document.getElementById("submit-error").classList.remove("hidden");
-    } else{
+    } else {
         appointmentData.title = appointmentType.value;
         appointmentData.patient = appointmentPatient.value;
+        appointmentData.date = appointmentDate.value;
+        appointmentData.hour = appointmentHour.value;
 
         fetch(`http://127.0.0.1:3000/appointments`,{
             method: 'POST',
