@@ -4,6 +4,7 @@ const form = document.getElementById("form");
 const appointmentType = document.getElementById("appointment-type");
 const appointmentPatient = document.getElementById("patient-select");
 const appointmentDate = document.getElementById("date-selector");
+const appointmentHour = document.getElementById("hour-select");
 const appointmentDescription = document.getElementById("description");
 
 const appointmentData = {
@@ -11,6 +12,7 @@ const appointmentData = {
     patient: "",
     specialist: localStorage.getItem("user_id"),
     date: "",
+    hour: "",
     desc: ""
 }
 
@@ -19,7 +21,40 @@ const validationError = {
     patient: false,
     specialist: false,
     date: false,
+    hour: false,
     desc: false
+}
+
+// function to load the available hours
+function changeHourSelector() {
+    let specialist_id = localStorage.getItem("user_id");
+    let patient_id;
+    if(appointmentPatient.value) {
+        patient_id = appointmentPatient.value;
+    } else {
+        patient_id = appointmentData.patient;
+    }
+    let date = appointmentDate.value;
+    var hours = [];
+    fetch(`http://127.0.0.1:3000/appointments/${specialist_id}&${date}`).then(res=>{
+        if(res.ok){
+            return res.json();
+        }
+    })
+    .then(data => hours = data)
+    .then(() => {
+        fetch(`http://127.0.0.1:3000/appointments/patient/${patient_id}&${date}`)
+        .then(res => {
+            if (res.ok) return res.json();
+        })
+        .then(data => {
+            hours = hours.filter((h) => data.includes(h));
+            console.log(hours);
+            hours.forEach(hour => {
+                appointmentHour.innerHTML += `<option value="${hour}"> ${hour} </option>`;
+            })
+        });
+    });
 }
 
 // fetch old data
@@ -31,15 +66,19 @@ fetch(`http://127.0.0.1:3000/appointments/${appointment_id}`)
     }
 })
 .then(data => {
-    appointmentData.title =data.title;
+    appointmentData.title = data.title;
     appointmentData.date = data.date;
+    appointmentData.hour = data.hour
     appointmentData.desc = data.desc;
     appointmentData.patient = data.patient;
     appointmentData.specialist = data.specialist;
 
+    // Input values
     appointmentType.value = data.title;
-    appointmentDescription.value = data.desc
-    // appointmentDate.value = new Date(data.date).toISOString();
+    appointmentDate.value = data.date;
+    appointmentDescription.value = data.desc;
+    changeHourSelector();
+    appointmentHour.innerHTML += `<option value="${data.hour}" selected> ${data.hour} </option>`;
 });
 
 fetch("http://127.0.0.1:3000/users/role/patient").then(res =>{
@@ -47,8 +86,12 @@ fetch("http://127.0.0.1:3000/users/role/patient").then(res =>{
         return res.json();
     }
 }).then(data =>{
-    data.forEach(specialist => {
-        appointmentPatient.innerHTML+=`<option value="${specialist.id}"> ${specialist.name} </option>`
+    data.forEach(patient => {
+        if(patient.id === appointmentData.patient) {
+            appointmentPatient.innerHTML+=`<option value="${patient.id}" selected> ${patient.name} </option>`
+        } else {
+            appointmentPatient.innerHTML+=`<option value="${patient.id}"> ${patient.name} </option>`
+        }
     });
 });
 
@@ -63,6 +106,7 @@ appointmentDate.addEventListener('change', (event) =>{
         validationError.date=false;
         appointmentData.date = value;
         document.getElementById("date-error").classList.add('hidden');
+        changeHourSelector();
     }
 });
 
@@ -91,9 +135,12 @@ form.addEventListener('submit', (event) =>{
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
         appointmentData.title = appointmentType.value;
+        appointmentData.patient = appointmentPatient.value;
+        appointmentData.date = appointmentDate.value;
+        appointmentData.hour = appointmentHour.value;
 
-        fetch(`http://127.0.0.1:3000/appointments`,{
-            method: 'POST',
+        fetch(`http://127.0.0.1:3000/appointments/${appointment_id}`,{
+            method: 'PUT',
             body: JSON.stringify(appointmentData),
             headers: {
                 'Content-Type': 'application/json'

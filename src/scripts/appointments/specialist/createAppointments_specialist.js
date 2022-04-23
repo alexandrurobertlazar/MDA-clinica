@@ -7,8 +7,6 @@ const appointmentDate = document.getElementById("date-selector");
 const appointmentHour = document.getElementById("hour-select");
 const appointmentDescription = document.getElementById("description");
 
-const user = localStorage.getItem("user_id");
-
 const appointmentData = {
     title: "",
     patient: "",
