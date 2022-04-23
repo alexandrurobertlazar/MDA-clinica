@@ -4,6 +4,7 @@ const form = document.getElementById("form");
 const appointmentType = document.getElementById("appointment-type");
 const appointmentPatient = document.getElementById("patient-select");
 const appointmentDate = document.getElementById("date-selector");
+const appointmentHour = document.getElementById("hour-select");
 const appointmentDescription = document.getElementById("description");
 
 const user = localStorage.getItem("user_id");
@@ -13,6 +14,7 @@ const appointmentData = {
     patient: "",
     specialist: localStorage.getItem("user_id"),
     date: "",
+    hour: "",
     desc: ""
 }
 
@@ -21,6 +23,7 @@ const validationError = {
     patient: false,
     specialist: false,
     date: false,
+    hour: false,
     desc: false
 }
 
@@ -41,7 +44,7 @@ appointmentDate.addEventListener('change', (event) =>{
     if(Date.parse(value) <= Date.parse(hoy.toISOString())){
         validationError.date = true;
         document.getElementById("date-error").classList.remove('hidden');
-    } else{
+    } else {
         validationError.date=false;
         appointmentData.date = value;
         document.getElementById("date-error").classList.add('hidden');

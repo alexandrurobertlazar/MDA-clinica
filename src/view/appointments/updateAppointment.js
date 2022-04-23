@@ -44,11 +44,11 @@ fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
         return res.json();
     }
 }).then(data =>{
-    data.forEach(specialist => {
-        if(specialist.id === specialistOrigin){
-            specialistSelector.innerHTML+= `<option selected value="${specialist.id}"> ${specialist.name} </option>`
+    data.forEach(especialist => {
+        if(especialist.id === especialistOrigin){
+            especialistSelector.innerHTML+= `<option selected value="${especialist.id}"> ${especialist.name} </option>`
         } else{
-            specialistSelector.innerHTML+=`<option value="${specialist.id}"> ${specialist.name} </option>`
+            especialistSelector.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
         }
     });
 }).then(()=>{
