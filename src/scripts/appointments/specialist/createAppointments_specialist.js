@@ -44,7 +44,6 @@ function changeHourSelector() {
         })
         .then(data => {
             hours = hours.filter((h) => data.includes(h));
-            console.log(hours);
             hours.forEach(hour => {
                 appointmentHour.innerHTML += `<option value="${hour}"> ${hour} </option>`;
             })

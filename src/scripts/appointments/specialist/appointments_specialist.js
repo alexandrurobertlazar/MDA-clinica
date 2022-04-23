@@ -69,6 +69,9 @@ const appointmentListComponent = (appointment, patient) => {
                     <h3 class="m-1 font-light">
                         Fecha: ${appointment.date}
                     </h3>
+                    <h3 class="m-1 font-light">
+                        Hora: ${appointment.hour}
+                    </h3>
                 </div>
                 <div class="flex flex-col md:flex-row">
                     <button
@@ -131,6 +134,12 @@ sortAppointmentsSelect.addEventListener('change', (event) => {
             var keyB = new Date(year, month-1, day);
             if(keyA < keyB) return 1;
             if(keyA > keyB) return -1;
+            var [a_hour, a_minute] = a.appointment.hour.split(":");
+            var [b_hour, b_minute] = b.appointment.hour.split(":");
+            if(a_hour < b_hour) return -1;
+            if(a_hour > b_hour) return 1;
+            if(a_minute < b_minute) return -1;
+            if(a_minute > b_minute) return 1;
             return 0;
         });
     } else {
@@ -141,6 +150,12 @@ sortAppointmentsSelect.addEventListener('change', (event) => {
             var keyB = new Date(year, month-1, day);
             if(keyA < keyB) return -1;
             if(keyA > keyB) return 1;
+            var [a_hour, a_minute] = a.appointment.hour.split(":");
+            var [b_hour, b_minute] = b.appointment.hour.split(":");
+            if(a_hour < b_hour) return 1;
+            if(a_hour > b_hour) return -1;
+            if(a_minute < b_minute) return 1;
+            if(a_minute > b_minute) return -1;
             return 0;
         });
     }
