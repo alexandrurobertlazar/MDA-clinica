@@ -67,9 +67,8 @@ userFormElement.addEventListener('submit', (event) => {
         }
     });
     if(!validation) {
-        document.getElementById("submit-error").classList.remove("hidden");
+        document.getElementById("submit-error-treatment").classList.remove("hidden");
     } else {
-        console.log("TRATAMIENTO DE D ATOS", treatmentData);
         fetch(`http://127.0.0.1:3000/treatments/${id_treatment}`, {
             method: 'PUT',
             body: JSON.stringify(treatmentData),

@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../styles/output.css">
-    <title>Clínica</title>
+    <title>Tratamientos</title>
 </head>
 <body class="bg-slate-100">
     <load-nav></load-nav>
@@ -43,11 +43,24 @@
                 <tbody id="patient-treatment">
                 </tbody>
               </table>
+             
             </div>
           </div>
         </div>
-      </div>
-      </div>
+    </div>
+    <div class="flex flex-col md:flex-row items-center justify-center m-auto mb-16">
+      <a
+      href="./CreateTreatment.html"
+      class="max-w-xl bg-blue-500 text-white font-bold px-3 py-2 rounded m-2">
+          Crear tratamiento
+      </a>
+      <button
+            id="delete-marked-treatments-button"
+            class="max-w-xl bg-red-500 text-white font-bold px-3 py-2 rounded m-2">
+                Eliminar tratamientos marcados
+      </button>
+    </div>
+    </div>
 
     <load-footer></load-footer>
     <script src="../../../assets/font-awesome/js/all.js"></script>
