@@ -8,6 +8,7 @@ const id_patient = localStorage.getItem("id"); // Get id_patient select
 var i = 1;
  
 var id_specialist = undefined;
+var id_specialist_2 = undefined;
 
 // Custom component for show each patient
 const patientDetailsComponent = (patient) => {
@@ -46,6 +47,7 @@ fetch('http://127.0.0.1:3000/users/role/patient')
 // Navigate to history
 function navigateToHistory(button) {
     localStorage.setItem('id', button.value);
+    //localStorage.setItem('id_specialist_2', );
     window.open("/src/view/aux/history/patientHistory.html", "_self");
 }
 
@@ -69,6 +71,8 @@ fetch(`http://127.0.0.1:3000/users/${id_patient}`)
 // Custom component for show history 
 const historyDetailsComponent = (history) => {
     id_specialist = history.id_specialist;
+    id_specialist_2 = history.id_specialist;
+    localStorage.setItem('id_specialist_2', id_specialist_2);
     return (`
     <tr class="text-center bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${i++}</td>

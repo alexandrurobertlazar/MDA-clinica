@@ -3,15 +3,14 @@ const nameTextAreaElement = document.getElementById("description");
 const userFormElement = document.getElementById("history-form");
 
 const id_history = localStorage.getItem("id_history");
-const id_specialist = localStorage.getItem("id_specialist");
+const user_id = localStorage.getItem("id_specialist_2");
 const id_patient = localStorage.getItem("id");
 
 const subtitle = document.getElementById("subtitle");
-
 // New history data
 const historyData = {
     id_patient: id_patient,
-    id_specialist: id_specialist,
+    id_specialist: user_id,
     subject: "",
     description: ""
 };
@@ -51,6 +50,7 @@ userFormElement.addEventListener('submit', (event) => {
     if(!validation) { 
         document.getElementById("submit-error").classList.remove("hidden");
     } else {
+        console.log(historyData);
         fetch(`http://127.0.0.1:3000/history`, {
             method: 'POST',
             body: JSON.stringify(historyData),
