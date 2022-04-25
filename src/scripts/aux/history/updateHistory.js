@@ -8,7 +8,7 @@ const id_patient = localStorage.getItem("id_patient");
 
 const subtitle = document.getElementById("subtitle");
 
-// New history data
+// New history data 
 const historyData = {
     id_patient: id_patient,
     id_specialist: id_specialist,
