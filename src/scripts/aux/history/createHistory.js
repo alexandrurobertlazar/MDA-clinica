@@ -48,7 +48,7 @@ userFormElement.addEventListener('submit', (event) => {
             validation = false;
         }
     });
-    if(!validation) {
+    if(!validation) { 
         document.getElementById("submit-error").classList.remove("hidden");
     } else {
         fetch(`http://127.0.0.1:3000/history`, {

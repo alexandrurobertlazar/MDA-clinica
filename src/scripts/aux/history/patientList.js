@@ -6,7 +6,7 @@ const subtitle = document.getElementById("subtitle");
 
 const id_patient = localStorage.getItem("id"); // Get id_patient select
 var i = 1;
-
+ 
 var id_specialist = undefined;
 
 // Custom component for show each patient
