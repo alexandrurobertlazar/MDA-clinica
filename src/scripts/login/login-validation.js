@@ -24,7 +24,6 @@ $(document).ready(function(){
             })
             .then(res => {
                 if(!res.ok) {
-                    console.log("ERROR");
                 } else {
                     return res.json();
                 }

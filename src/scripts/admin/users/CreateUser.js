@@ -31,6 +31,7 @@ const validationError = {
  */
 userFormElement.addEventListener('submit', (event) => {
     event.preventDefault();
+    userData.role = roleInputElement.value;
     var validation = true;
     Object.entries(validationError).forEach(error => {
         const [, value] = error;

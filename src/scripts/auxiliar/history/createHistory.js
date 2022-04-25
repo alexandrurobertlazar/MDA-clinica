@@ -3,7 +3,7 @@ const nameTextAreaElement = document.getElementById("description");
 const userFormElement = document.getElementById("history-form");
 
 const id_history = localStorage.getItem("id_history");
-const user_id = localStorage.getItem("id_specialist_2");
+const user_id = localStorage.getItem("user_id");
 const id_patient = localStorage.getItem("id");
 
 const subtitle = document.getElementById("subtitle");
@@ -50,7 +50,6 @@ userFormElement.addEventListener('submit', (event) => {
     if(!validation) { 
         document.getElementById("submit-error").classList.remove("hidden");
     } else {
-        console.log(historyData);
         fetch(`http://127.0.0.1:3000/history`, {
             method: 'POST',
             body: JSON.stringify(historyData),

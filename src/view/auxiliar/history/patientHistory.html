@@ -12,13 +12,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../styles/output.css">
-    <title>Listado de pacientes</title> 
+    <title>Historial del paciente</title> 
 </head>
 <body class="bg-slate-100">
     <load-nav></load-nav>
+
     <div class="p-6 flex flex-col">
-        <h1 class="text-4xl font-bold text-center mt-5">Listado de pacientes</h1>
-        <h3 class="text-center mt-2">En esta página podrá ver el listado de los pacientes de la clínica</h3>
+        <h1 class="text-4xl font-bold text-center mt-5" id="patient-name"></h1>
+        <h3 class="text-center mt-2" id="subtitle"></h3>
         <div class="p-6 flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -27,30 +28,33 @@
                     <thead class="bg-white border-b">
                         <tr class="text-center">
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                            Nombre
+                            Número de historial
                             </th>
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                            Correo
+                            Prueba clínica
                             </th>
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
-                            Teléfono
+                            Descripción
                             </th>
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
                             Acción
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="patient-list">
-
-                    </tbody>
+                    <tbody id="patient-history"></tbody>
                 </table>
                 </div>
             </div>
             </div>
         </div>
+        <div class="flex flex-col md:flex-row justifiy-center items-center m-auto mb-16">
+            <a href="./createHistory.html" class="max-w-xl bg-blue-500 text-white font-bold px-3 py-2 rounded m-2">
+                Crear prueba clínica
+            </a>
+        </div>
     </div>
 
     <load-footer></load-footer>
-    <script src="../../../scripts/aux/history/patientList.js"></script>
+    <script src="../../../scripts/auxiliar/history/patientList.js"></script>
 </body>
 </html>

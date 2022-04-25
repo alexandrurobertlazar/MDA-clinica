@@ -48,7 +48,7 @@ fetch('http://127.0.0.1:3000/users/role/patient')
 function navigateToHistory(button) {
     localStorage.setItem('id', button.value);
     //localStorage.setItem('id_specialist_2', );
-    window.open("/src/view/aux/history/patientHistory.html", "_self");
+    window.open("/src/view/auxiliar/history/patientHistory.html", "_self");
 }
 
 
@@ -94,7 +94,7 @@ function navigateToUpdateHistory(button) {
     localStorage.setItem('id_history', button.value);
     localStorage.setItem('id_patient', id_patient);
     localStorage.setItem('id_specialist', id_specialist);
-    window.open("/src/view/aux/history/updateHistory.html", "_self");
+    window.open("/src/view/auxiliar/history/updateHistory.html", "_self");
 }
 
 // Fetch history of a patient
@@ -108,7 +108,6 @@ fetch(`http://127.0.0.1:3000/history/${id_patient}`)
 })
 .then(data => {
     data.forEach(history => {
-        console.log(history);
         historyListElement.innerHTML += historyDetailsComponent(history);
     });
 });
