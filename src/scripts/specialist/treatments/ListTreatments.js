@@ -154,14 +154,14 @@ async function deleteTreatment(button) {
 // navigate to patient treatment
 function navigateToTreatments(button) {
     localStorage.setItem('id', button.value);
-    window.location.href = 'http://127.0.0.1:5500/src/view/specialist/treatments/ListTreatments.html';
+    window.open("/src/view/specialist/treatments/ListTreatments.html", "_self");
 }
 
 // navigate to update treatment
 function navigateToUpdateTreatment(button) {
     localStorage.setItem('id_treatment', button.value);
     localStorage.setItem('id_patient',id_patient);
-    window.location.href = 'http://127.0.0.1:5500/src/view/specialist/treatments/UpdateTreatment.html';
+    window.open("/src/view/specialist/treatments/UpdateTreatment.html", "_self");
 }
 
 // Event listeners

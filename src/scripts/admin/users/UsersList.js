@@ -16,13 +16,13 @@ function checkboxEvent(checkbox) {
 // navigate to user details
 function navigateToDetails(button) {
     localStorage.setItem('id', button.value);
-    window.location.href = 'http://127.0.0.1:5500/src/view/admin/users/UserDetails.html';
+    window.open("/src/view/admin/users/UserDetails.html", "_self");
 }
 
 // navigate to update user
 function navigateToUpdate(button) {
     localStorage.setItem('id', button.value);
-    window.location.href = 'http://127.0.0.1:5500/src/view/admin/users/UpdateUser.html';
+    window.open("/src/view/admin/users/UpdateUser.html", "_self");
 }
 
 // delete only ONE user

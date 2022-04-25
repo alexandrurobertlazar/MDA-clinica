@@ -32,7 +32,7 @@ $(document).ready(function(){
             .then(data => {
                 localStorage.setItem("user_id",data.id);
                 localStorage.setItem("role",data.role);
-                window.location.href = 'http://127.0.0.1:5500/src/view/index.html';
+                window.open("/src/view/index.html", '_self');
             })
         }
     });

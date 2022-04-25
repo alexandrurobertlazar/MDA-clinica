@@ -39,7 +39,6 @@ fetch('http://127.0.0.1:3000/users/role/patient')
 })
 .then(data => {
     data.forEach(patients => {
-        console.log(patients);
         patientListElement.innerHTML += patientDetailsComponent(patients);
     });
 });
@@ -47,7 +46,7 @@ fetch('http://127.0.0.1:3000/users/role/patient')
 // Navigate to history
 function navigateToHistory(button) {
     localStorage.setItem('id', button.value);
-    window.location.href = 'http://127.0.0.1:5500/src/view/aux/history/patientHistory.html';
+    window.open("/src/view/aux/history/patientHistory.html", "_self");
 }
 
 
@@ -91,7 +90,7 @@ function navigateToUpdateHistory(button) {
     localStorage.setItem('id_history', button.value);
     localStorage.setItem('id_patient', id_patient);
     localStorage.setItem('id_specialist', id_specialist);
-    window.location.href = 'http://127.0.0.1:5500/src/view/aux/history/updateHistory.html';
+    window.open("/src/view/aux/history/updateHistory.html", "_self");
 }
 
 // Fetch history of a patient

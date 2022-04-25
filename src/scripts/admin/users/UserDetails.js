@@ -30,7 +30,7 @@ fetch(`http://127.0.0.1:3000/users/${user_id}`)
 
 function navigateToUpdate() {
     localStorage.setItem('id', user_id);
-    window.location.href = 'http://127.0.0.1:5500/src/view/admin/users/UpdateUser.html';
+    window.open("/src/view/admin/users/UpdateUser.html", "_self");
 }
 
 // delete user
@@ -47,7 +47,7 @@ async function deleteUser(button) {
     })
     .then(data => {
         if(data.removed) {
-            window.location.href = 'http://127.0.0.1:5500/src/view/admin/users/UsersList.html';
+            window.open("/src/view/admin/users/UsersList.html", "_self");
         }
     });
 }
