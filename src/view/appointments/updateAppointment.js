@@ -54,7 +54,6 @@ fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
 }).then(()=>{
     fetch(url).then(res=>{
         if(!res.ok){
-            console.log("ERROR");
         } else{
             return res.json();
         }

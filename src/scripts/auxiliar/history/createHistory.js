@@ -50,7 +50,6 @@ userFormElement.addEventListener('submit', (event) => {
     if(!validation) { 
         document.getElementById("submit-error").classList.remove("hidden");
     } else {
-        console.log(historyData);
         fetch(`http://127.0.0.1:3000/history`, {
             method: 'POST',
             body: JSON.stringify(historyData),

@@ -60,7 +60,6 @@ fetch(`http://127.0.0.1:3000/users/${user_id}`)
 userFormElement.addEventListener('submit', (event) => {
     event.preventDefault();
     userData.role = roleInputElement.value;
-    console.log(userData);
     var validation = true;
     Object.entries(validationError).forEach(error => {
         const [, value] = error;
