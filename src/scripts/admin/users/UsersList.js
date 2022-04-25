@@ -76,6 +76,7 @@ deleteMarkedUsersButton.addEventListener('click', (event) => {
 
 // Custom component for show each user
 const userDetailsComponent = (user) => {
+    console.log("esto es", user);
     return (`
         <li id=${user.id}>
             <div class="flex flex-col justify-center md:flex-row md:justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">

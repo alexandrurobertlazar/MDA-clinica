@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../styles/output.css">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="/src/scripts/components/nav/nav.js"></script>
+    <script src="/src/scripts/components/footer/footer.js"></script>
+    <title>Actualizar tratamiento</title>
+</head>
+<body class="bg-slate-100">
+    <load-nav></load-nav>
+    <div class="flex flex-col items-center justify-center content-center text-center my-4">
+        <h1 class="mt-5 text-4xl font-bold">Editar tratamiento</h1>
+        <h3 id="subtitle" class="mt-2"></h3>
+    </div>
+    <div id="form-container" class="flex flex-col items-center">
+        <div id="success-container-treatment" class="mb-16 hidden flex-col items-center m-3 p-3 rounded border shadow">
+            <h2 class="text-xl font-bold">El tratamiento ha sido actualizado con éxito</h2>
+            <a
+            href="./ListTreatments.html"
+            class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2">
+                Volver atrás
+            </a>
+        </div>
+        <form
+        id="user-form"
+        class="w-3/4 mb-16 flex flex-col justify-center content-center items-center m-3 p-2.5 shadow rounded">
+            <div id="subject-container" class="flex flex-col items-center">
+                <label class="font-bold m-1" for="subject">Tratamiento</label>
+                <input
+                class="treatment-input"
+                type="text" name="subject" id="subject" required>
+                <h4 id="subject-error" class="font-light text-red-600 hidden">El tratamiento no es válido</h4> 
+            </div>
+
+            <div id="description-container" class="m-2 flex flex-col items-center">
+                <label class="font-bold m-1" for="description">Descripción del tratamiento</label>
+                <textarea id="description"
+                          name="description"
+                          class="textarea h-60" required></textarea>
+                <h4 id="description-error" class="font-light text-red-600 hidden">La descripción no es válida</h4> 
+            </div>
+            
+            <div id="submit-container-treatment" class="flex flex-col items-center">
+                <button 
+                class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2"
+                type="submit">
+                    Actualizar
+                </button>
+                <h4 id="submit-error-treatment" class="font-light text-red-600 hidden">Revise todos los campos</h4> 
+            </div>
+        </form>
+    </div>
+    <load-footer></load-footer>
+    <script src="../../../scripts/specialist/treatments/UpdateTreatment.js"></script>
+</body>
+</html>
