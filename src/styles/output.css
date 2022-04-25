@@ -1654,6 +1654,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: auto;
   }
 
+  .md\:w-1\/6 {
+    width: 16.666667%;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }

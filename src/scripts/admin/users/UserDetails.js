@@ -6,8 +6,6 @@ const roleText = document.getElementById("role-text");
 const user_id = localStorage.getItem('id');
 if(!user_id) {
     history.back();
-} else {
-    localStorage.removeItem('id');
 }
 
 /**
