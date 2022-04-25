@@ -80,7 +80,7 @@ const historyDetailsComponent = (history) => {
                 value=${history._id}
                 onclick=navigateToUpdateHistory(this)
                 class="text-blue-500 underline md:no-underline md:bg-blue-500 md:text-white font-bold p-2 rounded">
-                    Editar historial
+                    Editar prueba clínica
             </button>
         </td>
     </tr>`);

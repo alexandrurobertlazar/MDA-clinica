@@ -4,7 +4,7 @@ const userFormElement = document.getElementById("history-form");
 
 const id_history = localStorage.getItem("id_history");
 const id_specialist = localStorage.getItem("id_specialist");
-const id_patient = localStorage.getItem("id_patient");
+const id_patient = localStorage.getItem("id");
 
 const subtitle = document.getElementById("subtitle");
 
@@ -22,28 +22,6 @@ const validationError = {
     description: false
 }
 
-// Go back
-if(!id_history) {
-    history.back();
-}
-
-// Fetch old data
-fetch(`http://127.0.0.1:3000/history/historyind/${id_history}`)
-.then(res => {
-    if(!res.ok) {
-        // Mostrar error al usuario
-    } else {
-        return res.json();
-    }
-})
-.then(history => {
-    nameInputElement.defaultValue = history.subject;
-    nameTextAreaElement.defaultValue = history.description;
-
-    historyData.subject = history.subject;
-    historyData.description = history.description;
-});
-
 // Fetch name patient (subtitle)
 fetch(`http://127.0.0.1:3000/users/${id_patient}`)
 .then(res => {
@@ -54,7 +32,7 @@ fetch(`http://127.0.0.1:3000/users/${id_patient}`)
     }
 })
 .then(data => {
-    subtitle.innerHTML = `En esta página podrá actualizar los datos del historial del paciente ${data.name}`;
+    subtitle.innerHTML = `Cree una nueva prueba clínica para el paciente ${data.name}`;
 });
 
 
@@ -73,8 +51,8 @@ userFormElement.addEventListener('submit', (event) => {
     if(!validation) {
         document.getElementById("submit-error").classList.remove("hidden");
     } else {
-        fetch(`http://127.0.0.1:3000/history/${id_history}`, {
-            method: 'PUT',
+        fetch(`http://127.0.0.1:3000/history`, {
+            method: 'POST',
             body: JSON.stringify(historyData),
             headers: {
                 'Content-Type': 'application/json'
@@ -122,7 +100,6 @@ nameTextAreaElement.addEventListener('change', (event) => {
         historyData.description = value;
     }
 })
-
 
 
 

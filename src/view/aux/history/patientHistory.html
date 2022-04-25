@@ -12,12 +12,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../styles/output.css">
-    <title>Clínica</title>
+    <title>Historial del paciente</title>
 </head>
 <body class="bg-slate-100">
     <load-nav></load-nav>
 
-    <div>
+    <div class="p-6 flex flex-col">
         <h1 class="text-4xl font-bold text-center mt-5" id="patient-name"></h1>
         <h3 class="text-center mt-2" id="subtitle"></h3>
         <div class="p-6 flex flex-col">
@@ -46,6 +46,11 @@
                 </div>
             </div>
             </div>
+        </div>
+        <div class="flex flex-col md:flex-row justifiy-center items-center m-auto mb-16">
+            <a href="./createHistory.html" class="max-w-xl bg-blue-500 text-white font-bold px-3 py-2 rounded m-2">
+                Crear prueba clínica
+            </a>
         </div>
     </div>
 

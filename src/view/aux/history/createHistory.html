@@ -9,46 +9,48 @@
     <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
     <script src="/src/scripts/components/nav/nav.js"></script>
     <script src="/src/scripts/components/footer/footer.js"></script>
-    <title>Actualizar historial</title>
+    <title>Crear prueba clínica</title>
 </head>
 <body class="bg-slate-100">
     <load-nav></load-nav>
     <div class="p-6 flex flex-col items-center justify-center content-center text-center my-4">
-        <h1 class="text-4xl font-bold mt-5">Editar prueba clínica</h1>
-        <h3 id="subtitle" class="mt-2"></h3>
+        <h1 class="text-4xl font-bold mt-5">Crear prueba clínica</h1>
+        <h3 class="mt-2" id="subtitle"></h3>
     </div>
     <div id="form-container" class="flex flex-col items-center">
         <div id="success-container" class="hidden flex-col items-center m-3 p-3 rounded border shadow mb-16">
-            <h2 class="text-xl font-bold mb-2">La prueba clínica ha sido actualizada con éxito</h2>
-            <a href="./patientHistory.html" class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2">
+            <h2 class="text-xl font-bold mb-2">La prueba clínica ha sido creada con éxito</h2>
+            <a
+            href="./patientHistory.html"
+            class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2">
                 Volver atrás
             </a>
         </div>
-        <form id="history-form" class="w-3/4 mb-16 flex flex-col justify-center content-center items-center m-3 p-2.5 shadow rounded">
-
+        <form id="history-form" class="w-3/4 flex flex-col justify-center content-center items-center m-3 p-2.5 shadow rounded">
+           
             <div id="subject-container" class="flex flex-col items-center">
                 <label class="font-bold m-1" for="subject">Prueba Clínica</label>
                 <input class="history-input" type="text" name="subject" id="subject" required>
                 <h4 id="subject-error" class="font-light text-red-600 hidden">La prueba clínica no es válida</h4> 
             </div>
-
             <div id="description-container" class="flex flex-col items-center m-2">
                 <label class="font-bold m-1" for="description">Descripción de la prueba clínica</label>
                 <textarea class="history-textarea h-60" name="description" id="description" required></textarea>
                 <h4 id="description-error" class="font-light text-red-600 hidden">La descripción no es válida</h4> 
             </div>
-
+    
             <div id="submit-container" class="flex flex-col items-center">
                 <button 
                 class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2"
                 type="submit">
-                    Actualizar
+                    Crear
                 </button>
                 <h4 id="submit-error" class="font-light text-red-600 hidden">Revise todos los campos</h4> 
             </div>
+
         </form>
     </div>
     <load-footer></load-footer>
-    <script src="../../../scripts/aux/history/updateHistory.js"></script>
+    <script src="../../../scripts/aux/history/createHistory.js"></script>
 </body>
 </html>
