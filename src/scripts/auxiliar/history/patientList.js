@@ -108,7 +108,6 @@ fetch(`http://127.0.0.1:3000/history/${id_patient}`)
 })
 .then(data => {
     data.forEach(history => {
-        console.log(history);
         historyListElement.innerHTML += historyDetailsComponent(history);
     });
 });
