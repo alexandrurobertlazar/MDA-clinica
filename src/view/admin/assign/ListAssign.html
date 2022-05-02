@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="../../../assets/font-awesome/css/solid.css" rel="stylesheet">
+    <link href="../../../assets/font-awesome/css/brands.css" rel="stylesheet">
+    <link href="../../../assets/font-awesome/css/solid.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="/src/scripts/components/nav/nav.js"></script>
+    <script src="/src/scripts/components/footer/footer.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../styles/output.css">
+    <title>Asignación de médicos cabeceras</title>
+</head>
+<body class="bg-slate-100">
+    <load-nav></load-nav>
+  
+    <div class="mt-5">
+    <h1 class="text-4xl font-bold text-center">Mis Pacientes</h1>
+    <h3 class="mt-2 text-center">En esta página podrá ver y administrar las asignaciones de los médicos de cabecera de los pacientes.</h3>
+    <div class="p-6 flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+              <table class="min-w-full">
+                <thead class="bg-white border-b">
+                    <tr class="text-center ">
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Número de asignación
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Paciente
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Especialista
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Acción
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="patient-list">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="flex flex-col md:flex-row items-center justify-center m-auto mb-16">
+        <a
+        href="./CreateAssign.html"
+        class="max-w-xl bg-blue-500 text-white font-bold px-3 py-2 rounded m-2">
+            Nueva asignación
+        </a>
+        <button
+              id="delete-marked-treatments-button"
+              class="max-w-xl bg-red-500 text-white font-bold px-3 py-2 rounded m-2">
+                  Eliminar asignaciones marcadas
+        </button>
+      </div>
+      </div>
+    <load-footer></load-footer>
+    <script src="../../../assets/font-awesome/js/all.js"></script>
+    <script src="../../../scripts/admin/assign/ListAssign.js"></script>
+</body>
+</html>
