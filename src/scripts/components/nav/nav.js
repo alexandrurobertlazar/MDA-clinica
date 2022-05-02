@@ -47,7 +47,7 @@ class NavBar extends HTMLElement {
                                 </li>
                                 
                                 <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
-                                    <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Mi perfil</a>
+                                    <a href="/src/view/user/profile.html" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Mi perfil</a>
                                 </li>
                                 <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
                                     <a href="/src/view/index.html" id="logout" class="block py-2 pr-4 pl-3 text-blue-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0">Cerrar sesión</a>
@@ -117,7 +117,7 @@ class NavBar extends HTMLElement {
                                                 <a href="#" class="block text-blue-700 border-b bg-white border-gray-100 hover:text-blue-600 py-4 px-4 hover:bg-gray-50">Mis recetas</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="block text-blue-700 border-b bg-white border-gray-100 hover:text-blue-600 py-4 px-4 hover:bg-gray-50">Mi perfil</a>
+                                                <a href="/src/view/user/profile.html" class="block text-blue-700 border-b bg-white border-gray-100 hover:text-blue-600 py-4 px-4 hover:bg-gray-50">Mi perfil</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -178,7 +178,7 @@ class NavBar extends HTMLElement {
                                  </li>
                                 
                                 <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
-                                    <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Mi perfil</a>
+                                    <a href="/src/view/user/profile.html" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Mi perfil</a>
                                 </li>
                                 <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
                                     <a href="/src/view/index.html" id="logout" class="block py-2 pr-4 pl-3 text-blue-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Cerrar sesión</a>
@@ -227,7 +227,7 @@ class NavBar extends HTMLElement {
                                 </li>
                                 
                                 <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
-                                    <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Mi perfil</a>
+                                    <a href="/src/view/user/profile.html" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Mi perfil</a>
                                 </li>
                                 <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
                                     <a href="/src/view/index.html" id="logout" class="block py-2 pr-4 pl-3 text-blue-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Cerrar sesión</a>
