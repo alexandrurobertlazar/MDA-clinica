@@ -36,16 +36,13 @@
         let pdf = new window.jspdf.jsPDF('p', 'pt', 'a4');
         pdf.html(data, 
             {
-                html2canvas: {
-                    // insert html2canvas options here, e.g.
-                }, 
                 callback: function (doc) {
                     doc.save("ListTreatments.pdf");
                 },
             });
         setTimeout(function () {
-            //window.close();
-        }, 1000)
+            window.close();
+        }, 500)
     }
     function loadPDFData() {
         const id_patient = localStorage.getItem("user_id");
