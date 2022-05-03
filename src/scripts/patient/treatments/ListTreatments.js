@@ -53,6 +53,10 @@ fetch(`http://127.0.0.1:3000/treatments/${id_patient}`)
 
 
 function getPdfTreatments() {
-    localStorage.setItem('treatmentList', JSON.stringify(treatmentList));
-    window.open("/src/pdf/treatments.html", '_blank');
+    if (treatmentList.length > 0) {
+        localStorage.setItem('treatmentList', JSON.stringify(treatmentList));
+        window.open("/src/pdf/treatments.html", '_blank');
+    } else {
+        alert("Error: No tiene tratamientos.")
+    }    
 }
