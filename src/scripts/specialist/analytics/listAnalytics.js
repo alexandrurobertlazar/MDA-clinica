@@ -1,16 +1,16 @@
 const user_id = localStorage.getItem("user_id");
-const url =`http://127.0.0.1:3000/appointments/usr/${user_id}`
-const citas = document.getElementById("citas");
-const noCitas=document.getElementById("noCitas");
+const url =`http://127.0.0.1:3000/analytics/esp/${user_id}`
+const pruebas = document.getElementById("pruebas");
+const noPruebas=document.getElementById("noPruebas");
 
-var markedAppointments =[];
+var markedAnalytics =[];
 
 function checkboxEvent(checkbox) {
     if(checkbox.checked) {
-        markedAppointments.push(checkbox.value);
+        markedAnalytics.push(checkbox.value);
         
     } else { 
-        markedAppointments = markedAppointments.filter(id => id !== checkbox.value);
+        markedAnalytics = markedAnalytics.filter(id => id !== checkbox.value);
     }
 }
 
@@ -22,9 +22,9 @@ fetch(url).then(res=>{
 })
 .then(data =>{
     if(data.length == 0){
-        noCitas.innerHTML=`<h1 class="text-center text-xl font-bold">No tiene citas<h1>`
+        noPruebas.innerHTML=`<h1 class="text-center text-xl font-bold">No tiene pruebas<h1>`
     } else{
-        noCitas.innerHTML='';
+        noPruebas.innerHTML='';
         data.sort((a, b) => {
             //Dia
             var [day1, month1, year1] = a.date.split('-');
@@ -36,14 +36,6 @@ fetch(url).then(res=>{
             var monthB = parseInt(month2);
             var yearB = parseInt(year2);
 
-            //Hora
-            var [hour1, min1] = a.hour.split(':');
-            var hourA = parseInt(hour1);
-            var minA = parseInt(min1);
-            var [hour2, min2] = b.hour.split(':');
-            var hourB = parseInt(hour2);
-            var minB = parseInt(min2);
-
             if(yearA < yearB) return -1;
             if(yearA > yearB) return 1;
             if(yearA === yearB) {
@@ -52,58 +44,54 @@ fetch(url).then(res=>{
                 if(monthA === monthB) {
                     if(dayA < dayB) return -1;
                     if(dayA > dayB) return 1;
-                    if(dayA === dayB) {
-                        if(hourA < hourB) return -1;
-                        if(hourA > hourB) return 1;
-                        if(hourA === hourB){
-                            if(minA < minB) return -1;
-                            if(minA > minB) return 1;
-                        }
-                    }
+                    if(dayA === dayB) return -1;
                 };
             };
             return 0;
         });
 
-        data.forEach(appointment => {
-            let title = appointment.title;
-            let dateRaw = appointment.date;
+        data.forEach(analytic => {
+            let dateRaw = analytic.date;
             let [year, month, day] = dateRaw.split("-");
             let date = day+"-"+month+"-"+year;
-            let hour = appointment.hour;
-            let appointment_id = appointment.id;
-            fetch(`http://127.0.0.1:3000/users/${appointment.specialist}`).then(res =>{
+            let analytic_id = analytic.id;
+            let desc = analytic.desc;
+            fetch(`http://127.0.0.1:3000/users/${analytic.patient}`).then(res =>{
                 if(res.ok){
                     return res.json();
                 }
             }).then(data =>{
-                citas.innerHTML += `
-                <li id=${appointment_id}>
+                pruebas.innerHTML += `
+                <li id=${analytic_id}>
                     <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5 transition duration-300 ease-in-out hover:bg-gray-100">
                         <div class="flex flex-row items-center justify-start">
-                            <input type="checkbox" value=${appointment_id} onchange="checkboxEvent(this)" class="m-2"> 
+                            <input type="checkbox" value=${analytic_id} onchange="checkboxEvent(this)" class="m-2"> 
                             <div id="info-cita">
-                                <label id="title" class="mx-3 font-bold"> ${title}</label>
-                                <label id="hora" class="mx-2">${hour}</label>
-                                <label id="fecha" class="mx-2">${date}</label>
-                                <label id="docLabel" class="mx-3 font-bold">Especialista: </label>
-                                <label id="doc" class="mx-3">  ${data.name} </label>
+                                <label id="paLabel" class="mx-1 font-bold">Paciente: </label>
+                                <label id="doc" class="mr-3">  ${data.name} </label>
+                                <label id="dateLabel" class="mx-1 font-bold">Fecha: </label>
+                                <label id="fecha" class="mr-3">${date}</label>
+                                <label id="descLabel" class="mx-1 font-bold">Descripción: </label>
+                                <label id="desc" class="mr-3"> ${desc} </label>
                             </div>
                         </div>
                         <div class="flex flex-row items-center justify-content-end">
                             <button 
-                            value=${appointment_id}
-                            onclick="updateAppointment(this)"
+                            value=${analytic_id}
+                            onclick="updateAnalytic(this)"
                             class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2"
                             >
-                                Modificar
+                                <div class="flex items-center hover:shadow hover:rounded duration-300">
+                                    <h6 class="px-2 hover:px-4 duration-300">Modificar</h6>
+                                    <i class="px-2 hover:px-4 duration-300 fa-solid fa-angle-right"></i>
+                                </div>
                             </button>
                             <button
-                            value=${appointment_id}
+                            value=${analytic_id}
                             class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2" 
-                            onclick="deleteAppointment(this)"
+                            onclick="deleteAnalytic(this)"
                             >
-                                Eliminar
+                                <h6 class="px-2 hover:px-4 duration-300">Eliminar</h6>
                             </button>
                         </div>
                     </li>
@@ -114,17 +102,17 @@ fetch(url).then(res=>{
     }
 });
 
-function updateAppointment(data){
-    localStorage.setItem("appointmentData", data.value);
-    window.open("./updateAppointment.html", "_self");
+function updateAnalytic(data){
+    localStorage.setItem("analyticData", data.value);
+    window.open("./updateAnalytic.html", "_self");
 }
 
-function createAppointment(){
-    window.open("./createAppointment.html", "_self");
+function createAnalytic(){
+    window.open("./createAnalytic.html", "_self");
 }
 
-function deleteAppointment(app_id){
-    fetch(`http://127.0.0.1:3000/appointments/${app_id.value}`,{
+function deleteAnalytic(app_id){
+    fetch(`http://127.0.0.1:3000/analytics/${app_id.value}`,{
         method: 'DELETE'
     }).then(res =>{
         if(res.ok){
@@ -136,9 +124,9 @@ function deleteAppointment(app_id){
     });
 }
 
-function deleteSelectedAppointments(){
-    markedAppointments.forEach(app =>{
-        fetch(`http://127.0.0.1:3000/appointments/${app}`,{
+function deleteSelectedAnalytics(){
+    markedAnalytics.forEach(app =>{
+        fetch(`http://127.0.0.1:3000/analytics/${app}`,{
             method: 'DELETE'
         }).then(res =>{
             if(res.ok){

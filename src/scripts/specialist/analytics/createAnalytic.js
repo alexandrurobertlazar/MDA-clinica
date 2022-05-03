@@ -1,38 +1,31 @@
-const form = document.getElementById("app-form");
-const type = document.getElementById("type");
-const especialistSelect = document.getElementById("especialist-select");
+const form = document.getElementById("prueba-form");
+const patientsSelect = document.getElementById("patients-select");
 const desc = document.getElementById("appointment-desc");
-const patient = localStorage.getItem("user_id");
+const specialist = localStorage.getItem("user_id");
 
 const dateSelector = document.getElementById("selectDate");
-const hourSelector = document.getElementById("selectHour");
 
-const appointmentData = {
-    title: "",
+const analyticData = {
     patient: "",
     specialist: "",
     date: "",
-    hour: "",
     desc: ""
 }
 
 const validationError ={
-    title: false,
     patient: false,
     specialist: false,
     date: false,
-    hour: false,
     desc: false
 }
 
-
-fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
+fetch(`http://127.0.0.1:3000/patientSpecialist/myPatients/${specialist}`).then(res =>{
     if(res.ok){
         return res.json();
     }
 }).then(data =>{
-    data.forEach(especialist => {
-        especialistSelect.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
+    data.forEach(patient => {
+        patientsSelect.innerHTML+=`<option value="${patient.id}"> ${patient.name} </option>`
     });
 });
 
@@ -48,14 +41,12 @@ form.addEventListener('submit', (event) =>{
     if(!validation){
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
-        appointmentData.title = type.value;
-        appointmentData.patient = patient;
-        appointmentData.specialist = especialistSelect.value;
-        appointmentData.date = dateSelector.value;
-        appointmentData.hour = hourSelector.value;
-        fetch(`http://127.0.0.1:3000/appointments`,{
+        analyticData.patient = patientsSelect.value;
+        analyticData.specialist = specialist;
+        analyticData.date = dateSelector.value;
+        fetch(`http://127.0.0.1:3000/analytics`,{
             method: 'POST',
-            body: JSON.stringify(appointmentData),
+            body: JSON.stringify(analyticData),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -65,7 +56,7 @@ form.addEventListener('submit', (event) =>{
             } else{
                 document.getElementById("submit-error").classList.add("hidden");
                 form.classList.add('hidden');
-                window.open("./appointments.html", "_self");
+                window.open("/src/view/specialist/analytics/listAnalytics.html", "_self");
             }
         });
     }
@@ -78,7 +69,7 @@ desc.addEventListener('change', (event) =>{
         document.getElementById("desc-error").classList.remove('hidden');
     } else{
         validationError.desc = false;
-        appointmentData.desc = value;
+        analyticData.desc = value;
         document.getElementById("desc-error").classList.add('hidden');
     }
 });
@@ -87,31 +78,12 @@ dateSelector.addEventListener('change', (event)=> {
     const value = event.target.value;
     let dateNow = Date.now();
     let hoy = new Date(dateNow);
-    if(Date.parse(value) <= Date.parse(hoy.toISOString())){
+    if(Date.parse(value) > Date.parse(hoy.toISOString())){
         validationError.date = true;
         document.getElementById("date-error").classList.remove('hidden');
     } else{
         validationError.date=false;
-        appointmentData.date = value;
+        analyticData.date = value;
         document.getElementById("date-error").classList.add('hidden');
-        changeHourSelector(event)
     }
 });
-    
-especialistSelect.addEventListener('change', (event)=>changeHourSelector(event));
-
-function changeHourSelector(event){
-    let specialist_id=especialistSelect.value;
-    let date = dateSelector.value;
-    console.log(date);
-    fetch(`http://127.0.0.1:3000/appointments/${specialist_id}&${date}`).then(res=>{
-        if(res.ok){
-            return res.json();
-        }
-    }).then(data=>{
-        hourSelector.innerHTML='';
-        data.forEach(hour => {
-            hourSelector.innerHTML+=`<option value="${hour}"> ${hour} </option>`;
-        });
-    })
-}

@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -881,6 +881,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .list-disc {
   list-style-type: disc;
 }
@@ -1506,12 +1513,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 2.5rem;
 }
 
-.hover\:font-light:hover {
-  font-weight: 300;
-}
-
-.hover\:font-bold:hover {
-  font-weight: 700;
+.hover\:px-4:hover {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .hover\:text-blue-700:hover {
