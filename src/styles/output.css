@@ -783,6 +783,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+.w-1\/4 {
+  width: 25%;
+}
+
 .w-3\/4 {
   width: 75%;
 }
@@ -903,6 +907,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   align-content: center;
 }
 
+.content-between {
+  align-content: space-between;
+}
+
 .content-evenly {
   align-content: space-evenly;
 }
@@ -919,6 +927,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   justify-content: flex-start;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -929,6 +941,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .justify-around {
   justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .gap-7 {
@@ -1074,12 +1090,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1rem;
 }
 
-.p-2\.5 {
-  padding: 0.625rem;
-}
-
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-2\.5 {
+  padding: 0.625rem;
 }
 
 .p-3 {
@@ -1102,6 +1118,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .px-3 {
@@ -1127,11 +1148,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 
 .py-2\.5 {
@@ -1181,6 +1197,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-4xl {
@@ -1241,6 +1262,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
+.text-blue-700 {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1294,11 +1320,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-
-.text-blue-700 {
-  --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
 .text-gray-700 {
@@ -1398,12 +1419,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-duration: 150ms;
 }
 
-.duration-150 {
-  transition-duration: 150ms;
-}
-
 .duration-300 {
   transition-duration: 300ms;
+}
+
+.duration-150 {
+  transition-duration: 150ms;
 }
 
 .ease-in {
@@ -1414,9 +1435,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.hover\:m-2:hover {
+  margin: 0.5rem;
+}
+
 .hover\:translate-x-1:hover {
   --tw-translate-x: 0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:rounded:hover {
+  border-radius: 0.25rem;
 }
 
 .hover\:border-b-2:hover {
@@ -1448,9 +1477,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(191 219 254 / var(--tw-bg-opacity));
 }
 
+.hover\:px-4:hover {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .hover\:px-10:hover {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+}
+
+.hover\:font-light:hover {
+  font-weight: 300;
+}
+
+.hover\:font-bold:hover {
+  font-weight: 700;
 }
 
 .hover\:text-blue-700:hover {
@@ -1476,6 +1518,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
+}
+
+.hover\:shadow:hover {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .focus\:border-blue-400:focus {
