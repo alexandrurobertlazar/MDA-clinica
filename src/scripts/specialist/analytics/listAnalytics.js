@@ -63,7 +63,7 @@ fetch(url).then(res=>{
             }).then(data =>{
                 pruebas.innerHTML += `
                 <li id=${analytic_id}>
-                    <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
+                    <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5 transition duration-300 ease-in-out hover:bg-gray-100">
                         <div class="flex flex-row items-center justify-start">
                             <input type="checkbox" value=${analytic_id} onchange="checkboxEvent(this)" class="m-2"> 
                             <div id="info-cita">
@@ -71,7 +71,7 @@ fetch(url).then(res=>{
                                 <label id="doc" class="mr-3">  ${data.name} </label>
                                 <label id="dateLabel" class="mx-1 font-bold">Fecha: </label>
                                 <label id="fecha" class="mr-3">${date}</label>
-                                <label id="descLabel" class="mx-1 font-bold">Desc: </label>
+                                <label id="descLabel" class="mx-1 font-bold">Descripción: </label>
                                 <label id="desc" class="mr-3"> ${desc} </label>
                             </div>
                         </div>
@@ -81,14 +81,17 @@ fetch(url).then(res=>{
                             onclick="updateAnalytic(this)"
                             class="bg-blue-500 text-white font-bold px-3 py-2 rounded m-2"
                             >
-                                Modificar
+                                <div class="flex items-center hover:shadow hover:rounded duration-300">
+                                    <h6 class="px-2 hover:px-4 duration-300">Modificar</h6>
+                                    <i class="px-2 hover:px-4 duration-300 fa-solid fa-angle-right"></i>
+                                </div>
                             </button>
                             <button
                             value=${analytic_id}
                             class="bg-red-500 text-white font-bold px-3 py-2 rounded m-2" 
                             onclick="deleteAnalytic(this)"
                             >
-                                Eliminar
+                                <h6 class="px-2 hover:px-4 duration-300">Eliminar</h6>
                             </button>
                         </div>
                     </li>
@@ -100,7 +103,7 @@ fetch(url).then(res=>{
 });
 
 function updateAnalytic(data){
-    localStorage.setItem("appointmentData", data.value);
+    localStorage.setItem("analyticData", data.value);
     window.open("./updateAnalytic.html", "_self");
 }
 

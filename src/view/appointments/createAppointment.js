@@ -32,7 +32,7 @@ fetch("http://127.0.0.1:3000/users/role/specialist").then(res =>{
     }
 }).then(data =>{
     data.forEach(especialist => {
-        patientsSelect.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
+        especialistSelect.innerHTML+=`<option value="${especialist.id}"> ${especialist.name} </option>`
     });
 });
 
@@ -48,14 +48,14 @@ form.addEventListener('submit', (event) =>{
     if(!validation){
         document.getElementById("submit-error").classList.remove("hidden");
     } else{
-        analyticData.title = type.value;
-        analyticData.patient = patient;
-        analyticData.specialist = patientsSelect.value;
-        analyticData.date = dateSelector.value;
-        analyticData.hour = hourSelector.value;
+        appointmentData.title = type.value;
+        appointmentData.patient = patient;
+        appointmentData.specialist = especialistSelect.value;
+        appointmentData.date = dateSelector.value;
+        appointmentData.hour = hourSelector.value;
         fetch(`http://127.0.0.1:3000/appointments`,{
             method: 'POST',
-            body: JSON.stringify(analyticData),
+            body: JSON.stringify(appointmentData),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -78,7 +78,7 @@ desc.addEventListener('change', (event) =>{
         document.getElementById("desc-error").classList.remove('hidden');
     } else{
         validationError.desc = false;
-        analyticData.desc = value;
+        appointmentData.desc = value;
         document.getElementById("desc-error").classList.add('hidden');
     }
 });
@@ -92,16 +92,16 @@ dateSelector.addEventListener('change', (event)=> {
         document.getElementById("date-error").classList.remove('hidden');
     } else{
         validationError.date=false;
-        analyticData.date = value;
+        appointmentData.date = value;
         document.getElementById("date-error").classList.add('hidden');
         changeHourSelector(event)
     }
 });
     
-patientsSelect.addEventListener('change', (event)=>changeHourSelector(event));
+especialistSelect.addEventListener('change', (event)=>changeHourSelector(event));
 
 function changeHourSelector(event){
-    let specialist_id=patientsSelect.value;
+    let specialist_id=especialistSelect.value;
     let date = dateSelector.value;
     console.log(date);
     fetch(`http://127.0.0.1:3000/appointments/${specialist_id}&${date}`).then(res=>{

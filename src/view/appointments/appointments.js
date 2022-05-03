@@ -1,4 +1,3 @@
-//Cuando se tenga un token se podrá poner las citas del usuario logeado y se cambiara la url
 const user_id = localStorage.getItem("user_id");
 const url =`http://127.0.0.1:3000/appointments/usr/${user_id}`
 const citas = document.getElementById("citas");
@@ -23,9 +22,9 @@ fetch(url).then(res=>{
 })
 .then(data =>{
     if(data.length == 0){
-        noPruebas.innerHTML=`<h1 class="text-center text-xl font-bold">No tiene citas<h1>`
+        noCitas.innerHTML=`<h1 class="text-center text-xl font-bold">No tiene citas<h1>`
     } else{
-        noPruebas.innerHTML='';
+        noCitas.innerHTML='';
         data.sort((a, b) => {
             //Dia
             var [day1, month1, year1] = a.date.split('-');
@@ -78,9 +77,9 @@ fetch(url).then(res=>{
                     return res.json();
                 }
             }).then(data =>{
-                pruebas.innerHTML += `
+                citas.innerHTML += `
                 <li id=${appointment_id}>
-                    <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5">
+                    <div class="flex justify-between content-center items-center flex-wrap rounded border m-4 md:m-8 p-2.5 transition duration-300 ease-in-out hover:bg-gray-100">
                         <div class="flex flex-row items-center justify-start">
                             <input type="checkbox" value=${appointment_id} onchange="checkboxEvent(this)" class="m-2"> 
                             <div id="info-cita">
