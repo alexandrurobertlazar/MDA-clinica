@@ -1,8 +1,13 @@
 const specialistsListElement = document.getElementById('specialists-lists')
 const requestsListElement = document.getElementById('requests-lists')
 
-function navigateToDetails() {
-    console.log("detalles");
+function navigateToDetails(value) {
+    console.log(value);
+}
+
+function navigateToRequestChange(value) {
+    window.localStorage.setItem("specialist_to_change", value.value);
+    window.open("./CreateSpecialistChangeRequest.html", '_self');
 }
 
 const user_id = window.localStorage.getItem('user_id')
@@ -18,9 +23,9 @@ const specialistComponent = (specialist) => {
             <button
             onclick=navigateToRequestChange(this)
             value=${specialist.id}
-            class="text-blue-700 font-bold flex items-center justify-center w-full"
+            class="text-blue-700 font-light flex items-center justify-center hover:font-bold duration-300"
             >
-                <h6 class="m-2">Editar</h6>
+                <h6 class="m-2">Solicitar cambio</h6>
                 <i class="fa-solid fa-pen-to-square"></i>
             </button>
         </div>
