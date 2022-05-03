@@ -32,6 +32,7 @@ fetch(`http://127.0.0.1:3000/users/${id_patient}`)
     subtitle.innerHTML = `En esta página podrá ver sus tratamientos`;
 });
 
+treatmentList = []
 
 // Fetch Treatments
 fetch(`http://127.0.0.1:3000/treatments/${id_patient}`)
@@ -45,9 +46,13 @@ fetch(`http://127.0.0.1:3000/treatments/${id_patient}`)
 .then(data => {
     data.forEach(treatments => {
         treatmentListElement.innerHTML += treatmentDetailsComponent(treatments);
+        treatmentList.push(treatments)
     });
 });
 
+
+
 function getPdfTreatments() {
-    
+    localStorage.setItem('treatmentList', JSON.stringify(treatmentList));
+    window.open("/src/pdf/treatments.html", '_blank');
 }

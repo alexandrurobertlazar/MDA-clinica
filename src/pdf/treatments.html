@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.6/purify.min.js"
+        integrity="sha512-DJjvM/U3zCRpzrYboJgg23iLHapWcS2rlo7Ni18Cdv+FMs6b3gUF7hQihztj4uVkHHfUwk7dha97jVzRqUJ7hg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+        integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <link rel="stylesheet" href="/src/styles/output.css">
+</head>
+<body style="width: 600px" class="py-2">
+    <div class="px-2 flex flex-row justify-between" style="width: 600px">
+        <img src="/src/assets/logo.png" alt="Logo Clínica ULPGC" width="100px">
+        <div class="font-bold">
+            <p id="patient-name"></p>
+            <p id="patient-phone"></p>
+            <p id="patient-email"></p>
+        </div>
+    </div>
+    <div class="flex flex-col mt-4">
+        <table class="table table-auto text-center">
+            <thead>
+                <tr>
+                    <th>Nombre del tratamiento</th>
+                    <th>Descripción del tratamiento</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+</body>
+<script type="text/javascript">
+    function savePDF(data) {
+        let pdf = new window.jspdf.jsPDF('p', 'pt', 'a4');
+        pdf.html(data, 
+            {
+                html2canvas: {
+                    // insert html2canvas options here, e.g.
+                }, 
+                callback: function (doc) {
+                    doc.save("ListTreatments.pdf");
+                },
+            });
+        setTimeout(function () {
+            //window.close();
+        }, 1000)
+    }
+    function loadPDFData() {
+        const id_patient = localStorage.getItem("user_id");
+        fetch(`http://127.0.0.1:3000/users/${id_patient}`)
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                }
+            })
+            .then(data => {
+                const treatmentList = JSON.parse(localStorage.getItem("treatmentList"))
+                const tableBody = document.getElementById("table-body")
+                document.getElementById("patient-name").innerHTML = data.name;
+                document.getElementById("patient-email").innerHTML = data.email;
+                document.getElementById("patient-phone").innerHTML = data.phone;
+                treatmentList.forEach(function (treatment) {
+                    tableBody.innerHTML += `
+                    <tr>
+                        <td>${treatment.subject}</td>
+                        <td>${treatment.description}</td>                
+                    </tr>
+                    `
+                })
+                savePDF(document.body);
+            });
+    }
+    loadPDFData()
+</script>
+
+</html>
