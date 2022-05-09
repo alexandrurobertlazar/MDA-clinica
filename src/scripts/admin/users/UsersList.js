@@ -25,6 +25,11 @@ function navigateToUpdate(button) {
     window.open("/src/view/admin/users/UpdateUser.html", "_self");
 }
 
+function navigateToChat(button) {
+    localStorage.setItem('id', button.value);
+    window.open("/src/view/chat/chat.html", "_self");
+}
+
 // delete only ONE user
 async function deleteUser(button) {
     await fetch(`http://127.0.0.1:3000/users/${button.value}`, {
@@ -92,6 +97,14 @@ const userDetailsComponent = (user) => {
                     </h5>
                 </div>
                 <div class="flex flex-col md:flex-row">
+                    ${user.role === 'patient' ? `
+                    <button
+                    value=${user.id}
+                    onclick=navigateToChat(this)
+                    class="text-green-500 underline md:no-underline md:bg-green-500 md:text-white font-bold px-3 py-2 rounded md:m-2">
+                        Ver chat con usuario
+                    </button>` : ''}
+                    
                     <button
                     value=${user.id}
                     onclick=navigateToDetails(this)
