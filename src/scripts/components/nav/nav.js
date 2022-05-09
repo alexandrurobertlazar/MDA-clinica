@@ -108,7 +108,7 @@ class NavBar extends HTMLElement {
                                         
                                         <ul class="dropdown-menu z-50 absolute hidden block pt-1 hpy:w-full">
                                             <li>
-                                                <a href="#" class="block text-blue-700 border-b bg-white border-gray-100 hover:text-blue-600 py-4 px-4 hover:bg-gray-50 ">Mi historial</a>
+                                                <a href="/src/view/patient/history.html" class="block text-blue-700 border-b bg-white border-gray-100 hover:text-blue-600 py-4 px-4 hover:bg-gray-50 ">Mi historial</a>
                                             </li>
                                             <li>
                                                 <a href="/src/view/patient/SpecialistList.html" class="block text-blue-700 border-b bg-white border-gray-100 hover:text-blue-600 py-4 px-4 hover:bg-gray-50">Mis especialistas</a>

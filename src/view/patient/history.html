@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="../../../assets/font-awesome/css/solid.css" rel="stylesheet">
+    <link href="../../../assets/font-awesome/css/brands.css" rel="stylesheet">
+    <link href="../../../assets/font-awesome/css/solid.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="/src/scripts/components/nav/nav.js"></script>
+    <script src="/src/scripts/components/footer/footer.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../styles/output.css">
+    <title>Mi historial</title> 
+</head>
+<body class="bg-gray-100">
+    <load-nav></load-nav>
+
+    <div class="p-6 flex flex-col">
+        <h1 class="text-4xl font-bold text-center mt-5" id="patient-name"></h1>
+        <h3 class="text-center mt-2" >En esta página podrá ver su historial con todas las pruebas clínicas realizadas</h3>
+        <div class="p-6 flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                <table class="min-w-full">
+                    <thead class="bg-white border-b">
+                        <tr class="text-center">
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Prueba clínica
+                            </th>
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Descripción
+                            </th>
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4">
+                            Sanitario responsable
+                            </th> 
+                        </tr>
+                    </thead>
+                    <tbody id="patient-history"></tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <load-footer></load-footer>
+    <script src="/src/scripts/patient/history.js"></script>
+</body>
+</html>
