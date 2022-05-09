@@ -8,13 +8,6 @@ var selectedPatient = undefined;
 var selectedSpecialist = undefined;
 var namePatientDefault = undefined;
 var nameSpecialistDefault = undefined;
-var specialFlag = false;
-
-// Validation error
-const validationError = {
-    patient: false,
-    specialist: false
-}
 
 // Custom component for show each patient
 const selectPatientComponent = (patients) => {
@@ -62,133 +55,6 @@ fetch(`http://127.0.0.1:3000/users/role/specialist`)
     });
 });
 
-// Selected Patients
-selectPatient.addEventListener('change',
-  function(){
-    var selectedOption = this.options[selectPatient.selectedIndex];
-    id_patient = selectedOption.id; 
-    flagPatient = true;
-});
-
-// Selected Specialists
-selectSpecialist.addEventListener('change',
-  function(){
-    var selectedOption = this.options[selectSpecialist.selectedIndex];
-    id_specialist = selectedOption.id; 
-    flagSpecialist = true;
-});
-
-/**
- * SUBMIT
- */
-assignFormElement.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    var assignData = {
-        id_patient: id_patient,
-        id_specialist: id_specialist,
-    }
-     
-    var validation = true;
-    Object.entries(validationError).forEach(error => {
-        const [, value] = error;
-        if(value) {
-            validation = false;
-        }
-    });
-
-    validation = validationsSelect(id_patient, id_specialist, validation);
-    
-    if(specialFlag){
-        assignData = {
-            id_patient: selectedPatient.id,
-            id_specialist: selectedSpecialist.id,
-        }
-    }
-    if(id_patient==="" && id_specialist!==""){
-        assignData = {
-            id_patient: selectedPatient.id,
-            id_specialist: id_specialist,
-        } 
-    }
-    if(id_patient!=="" && id_specialist===""){
-        assignData = {
-            id_patient: id_patient,
-            id_specialist: selectedSpecialist.id,
-        } 
-    }
-
-    if(!validation) {
-        document.getElementById("submit-error-assign").classList.remove("hidden");
-    } else {
-        fetch(`http://127.0.0.1:3000/patientSpecialist/${id_assign}`, {
-            method: 'PUT',
-            body: JSON.stringify(assignData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(res => {
-            if(!res.ok) {
-                // Mostrar error al usuario
-            } else {
-                document.getElementById("submit-error-assign").classList.add("hidden");
-                document.getElementById("success-container-assign").classList.add('flex');
-                document.getElementById("success-container-assign").classList.remove('hidden');
-                assignFormElement.classList.add('hidden');
-                assignFormElement.classList.remove('flex');
-            }
-        });
-    }
-});
-
-// Validations
-function validationsSelect(id_patient, id_specialist, validation) {
-    if(id_patient===""){
-        validation=false;
-        validationError.patient = true;
-        document.getElementById("patient-error").classList.remove('hidden');
-    } else {
-        validation=true;
-        validationError.patient = false;
-        document.getElementById("patient-error").classList.add('hidden'); 
-    }
-
-    if(id_specialist===""){
-        validation=false
-        validationError.specialist = true;
-        document.getElementById("specialist-error").classList.remove('hidden');
-    } else {
-        validation=true;
-        validationError.specialist = false;
-        document.getElementById("specialist-error").classList.add('hidden'); 
-    }
-
-    if(selectedPatient.id===namePatientDefault && id_patient===""){
-        validation=true;
-        validationError.patient = false;
-        document.getElementById("patient-error").classList.add('hidden');
-        specialFlag=true; 
-    } else {
-        validationError.patient = true;
-        document.getElementById("patient-error").classList.remove('hidden');
-        specialFlag=true;  
-    }
-
-    if(selectedSpecialist.id===nameSpecialistDefault && id_specialist===""){
-        validation=true;
-        validationError.specialist = false;
-        document.getElementById("specialist-error").classList.add('hidden'); 
-        specialFlag=true;
-    } else {
-        validationError.specialist = true;
-        document.getElementById("specialist-error").classList.remove('hidden');
-        specialFlag=false;
-    }
-
-    return validation;
-}
-
 // Fetch old data
 fetch(`http://127.0.0.1:3000/patientSpecialist/names`)
 .then(res => {
@@ -210,3 +76,66 @@ fetch(`http://127.0.0.1:3000/patientSpecialist/names`)
         }
     });
 });
+
+// Selected Patients
+selectPatient.addEventListener('change',
+  function(){
+    var selectedOption = this.options[selectPatient.selectedIndex];
+    id_patient = selectedOption.id; 
+});
+
+// Selected Specialists
+selectSpecialist.addEventListener('change',
+  function(){
+    var selectedOption = this.options[selectSpecialist.selectedIndex];
+    id_specialist = selectedOption.id; 
+});
+
+/**
+ * SUBMIT
+ */
+assignFormElement.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    var assignData = {
+        id_patient: id_patient,
+        id_specialist: id_specialist,
+    }
+
+    if(id_patient==="" && id_specialist!==""){
+        assignData = {
+            id_patient: namePatientDefault,
+            id_specialist: id_specialist,
+        }
+    } else if(id_specialist==="" && id_patient!==""){
+        assignData = {
+            id_patient: id_patient,
+            id_specialist: nameSpecialistDefault,
+        }
+    } else if(id_specialist==="" && id_patient===""){
+        assignData = {
+            id_patient: namePatientDefault,
+            id_specialist: nameSpecialistDefault,
+        }
+    }
+     
+    fetch(`http://127.0.0.1:3000/patientSpecialist/${id_assign}`, {
+        method: 'PUT',
+        body: JSON.stringify(assignData),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => {
+        if(!res.ok) {
+                // Mostrar error al usuario
+        } else {
+            document.getElementById("submit-error-assign").classList.add("hidden");
+            document.getElementById("success-container-assign").classList.add('flex');
+            document.getElementById("success-container-assign").classList.remove('hidden');
+            assignFormElement.classList.add('hidden');
+            assignFormElement.classList.remove('flex');
+        }
+    });
+});
+
