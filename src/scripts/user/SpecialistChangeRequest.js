@@ -31,6 +31,7 @@ changeForm.addEventListener('submit', (event) => {
     const changeRequest = {
         patient_id: user_id,
         specialist_id: newSpecialistSelector.value,
+        old_specialist: old_specialist,
         reason: changeReason.value.trim()
     }
     fetch(`http://127.0.0.1:3000/requests/`, {
