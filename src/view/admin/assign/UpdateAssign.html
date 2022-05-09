@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../styles/output.css">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.4/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="/src/scripts/components/nav/nav.js"></script>
+    <script src="/src/scripts/components/footer/footer.js"></script>
+    <title>Editar asignación</title>
+</head>
+<body class="bg-slate-100">
+    <load-nav></load-nav>
+    <div class="flex flex-col items-center justify-center content-center text-center my-4">
+        <h1 class="text-4xl font-bold mt-5">Editar asignación</h1>
+        <h3 class="mt-2">En esta página podrá editar esta asignación</h3>
+    </div>
+    <div id="form-container" class="flex flex-col items-center">
+        <div id="success-container-assign" class="mb-16 hidden flex-col items-center m-3 p-3 rounded border shadow">
+            <h2 class="text-xl font-bold">Se ha editado la asignación con éxito</h2>
+            <a
+            href="./ListAssign.html"
+            class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2">
+                Volver atrás
+            </a>
+        </div>
+        <form
+        id="assign-form"
+        class="w-3/4 flex flex-col justify-center content-center items-center m-3 p-2.5 shadow rounded">
+
+            <div id="patient-container" class="flex flex-col items-center">
+                <label class="font-bold m-1" for="patient">Nombre del paciente</label> 
+                <select id="selectPatient"
+                    class="h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline"
+                    name="sort-patients" required>
+                </select>
+                <h4 id="patient-error" class="font-light text-red-600 hidden">El paciente es obligatorio</h4> 
+            </div>
+
+            <div id="specialist-container" class="m-2 flex flex-col items-center">
+                <label class="font-bold m-1" for="patient">Nombre del especialista</label> 
+                <select id="selectSpecialist" required
+                    class="h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline"
+                    name="sort-specialists">
+                </select>
+                <h4 id="specialist-error" class="font-light text-red-600 hidden">El especialista es obligatorio</h4>  
+            </div>
+    
+            <div id="submit-container-assign" class="flex flex-col items-center">
+                <button 
+                class="bg-blue-500 text-white font-bold px-3 py-2 rounded mt-2"
+                type="submit">
+                    Editar
+                </button>
+                <h4 id="submit-error-assign" class="font-light text-red-600 hidden">Revise todos los campos</h4> 
+            </div>
+
+        </form>
+    </div>
+    <load-footer></load-footer>
+    <script src="/src/scripts/admin/assign/UpdateAssign.js"></script>
+</body>
+</html>

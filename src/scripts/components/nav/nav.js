@@ -45,6 +45,10 @@ class NavBar extends HTMLElement {
                                 <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
                                     <a href="/src/view/admin/users/UsersList.html" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 hover:text-blue-600 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Gestión de usuarios</a>
                                 </li>
+
+                                <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
+                                    <a href="/src/view/admin/assign/ListAssign.html" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 hover:text-blue-600 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Asignaciones</a>
+                                </li>
                                 
                                 <li class="hover:border-b-2 hover:translate-x-1 hover:border-gray-600 hpy:border-none">
                                     <a href="/src/view/user/profile.html" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 ">Mi perfil</a>
