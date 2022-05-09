@@ -20,7 +20,7 @@ class Footer extends HTMLElement {
                               <a href="#" class="hover:underline">Sobre Nosotros</a>
                           </li>
                           <li>
-                              <a href="#" class="hover:underline">Contáctanos</a>
+                              <a href="/src/view/contact.html" class="hover:underline">Contáctanos</a>
                           </li>
                       </ul>
                   </div>
