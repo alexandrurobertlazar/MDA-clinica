@@ -103,7 +103,6 @@ especialistSelect.addEventListener('change', (event)=>changeHourSelector(event))
 function changeHourSelector(event){
     let specialist_id=especialistSelect.value;
     let date = dateSelector.value;
-    console.log(date);
     fetch(`http://127.0.0.1:3000/appointments/${specialist_id}&${date}`).then(res=>{
         if(res.ok){
             return res.json();
