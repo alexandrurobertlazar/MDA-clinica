@@ -43,7 +43,7 @@ changeForm.addEventListener('submit', (event) => {
     })
     .then(res => {
         if(res.ok) {
-            window.open("/src/view/patient/SpecialistList.html", "_self");
+            window.open("/src/view/patient/RequestList.html", "_self");
         }
     })
 })

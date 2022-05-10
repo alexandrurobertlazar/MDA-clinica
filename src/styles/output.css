@@ -691,16 +691,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 4rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .mr-3 {
   margin-right: 0.75rem;
 }
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .block {
@@ -783,12 +783,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
-.w-1\/4 {
-  width: 25%;
-}
-
 .w-3\/4 {
   width: 75%;
+}
+
+.w-1\/4 {
+  width: 25%;
 }
 
 .w-5\/6 {
@@ -1502,10 +1502,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:px-10:hover {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-}
-
-.hover\:font-bold:hover {
-  font-weight: 700;
 }
 
 .hover\:text-blue-700:hover {
