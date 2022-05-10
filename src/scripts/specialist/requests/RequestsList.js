@@ -23,8 +23,16 @@ function acceptRequest(value) {
 }
 
 function deleteRequest(value) {
-    const { value: specialist_id } = value
-    
+    const { value: request_id } = value
+    fetch(`http://127.0.0.1:3000/requests/${request_id}`, {
+        method: 'DELETE'
+    })
+    .then(res => {
+        if(res.ok) {
+            window.open("/src/view/specialist/treatments/ListPatients.html", "_self");
+        }
+    })
+
 }
 
 const requestComponent = (request) => {
