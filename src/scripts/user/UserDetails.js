@@ -14,7 +14,6 @@ fetch(`http://127.0.0.1:3000/users/${user_id}`)
     }
 })
 .then(user => {
-    console.log(nameText);
     nameText.innerHTML = user.name;
     emailText.innerHTML = user.email;
     phoneText.innerHTML = user.phone;

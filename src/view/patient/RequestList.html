@@ -17,13 +17,19 @@
 <body>
     <load-nav></load-nav>
     <div class="flex flex-col items-center m-2">
-        <h1 class="m-2 text-4xl font-bold">Mis especialistas</h1>
-        <div class="flex flex-wrap content-center justify-center items-center w-full" id="specialists-lists">
-            
+        <h1 class="m-2 text-4xl font-bold">Mis solicitudes</h1>
+        <div class="flex text-blue-500 items-center hover:shadow hover:rounded duration-300">
+            <a
+            class="p-2 hover:px-4 duration-300"
+            href="./SpecialistList.html">Ver especialistas</a>
+            <i class="p-2 hover:px-4 duration-300 fa-solid fa-arrow-right"></i>
+        </div>
+        <div class="flex flex-col items-center w-full" id="requests-lists">
+            <h3 class="hidden" id="text-error">No hay solicitudes en este momento</h3>
         </div>
     </div>
     <load-footer></load-footer>
     <script src="../../assets/font-awesome/js/all.js"></script>
-    <script src="../../scripts/user/SpecialistList.js"></script>
+    <script src="../../scripts/user/RequestList.js"></script>
 </body>
 </html>

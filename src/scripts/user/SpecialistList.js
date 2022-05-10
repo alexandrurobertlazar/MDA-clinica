@@ -16,27 +16,13 @@ const specialistComponent = (specialist) => {
         <div class="flex flex-col items-center border rounded shadow w-1/4">
             <i class="fa-solid fa-user-doctor text-5xl m-2"></i>
             <h4 class="font-light m-2">${specialist.name}</h4>
-        </div>
-    `
-}
-
-const requestComponent = (request) => {
-    return `
-        <div class="flex flex-wrap items-center content-between justify-evenly rounded border shadow m-2 w-3/4">
-            <div class="flex flex-col p-2">
-                <h3 class="font-bold">Especialista</h3>
-                <h5 class="font-light">${request.specialist.name}</h5>
-            </div>
-            <div class="flex justify-end p-2">
-                <p class="font-light">${request.reason}</p>
-            </div>
             <div class="flex flex-col p-2">
                 <button
                 class="p-2 text-blue-700"
-                value=${request.id}
-                onclick=navigateToDetails(this)>
+                value=${specialist.id}
+                onclick=navigateToRequestChange(this)>
                     <div class="flex items-center hover:shadow hover:rounded duration-300">
-                        <h6 class="px-2 hover:px-4 duration-300">Detalles</h6>
+                        <h6 class="px-2 hover:px-4 duration-300">Cambiar</h6>
                         <i class="px-2 hover:px-4 duration-300 fa-solid fa-angle-right"></i>
                     </div>
                 </button>
@@ -55,18 +41,5 @@ fetch(`http://127.0.0.1:3000/patientSpecialist/mySpecialists/${user_id}`)
 .then(data => {
     for(let specialist of data) {
         specialistsListElement.innerHTML += specialistComponent(specialist);
-    }
-})
-
-// Requests
-fetch(`http://127.0.0.1:3000/requests/patient/${user_id}`)
-.then(res => {
-    if(res.ok) {
-        return res.json()
-    }
-})
-.then(data => {
-    for(let request of data) {
-        requestsListElement.innerHTML += requestComponent(request);
     }
 })
