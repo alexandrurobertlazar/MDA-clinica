@@ -31,22 +31,6 @@ const specialistComponent = (specialist) => {
     `
 }
 
-const requestComponent = (request) => {
-    return `
-        <div class="flex flex-wrap items-center content-between justify-evenly rounded border shadow m-2 w-3/4">
-            <div class="flex flex-col p-2">
-                <h3 class="font-bold">Especialista</h3>
-                <h5 class="font-light">${request.specialist.name}</h5>
-                <h3 class="font-bold">Antiguo especialista</h3>
-                <h5 class="font-light">${request.old_specialist.name}</h5>
-            </div>
-            <div class="flex justify-end p-2">
-                <p class="font-light">${request.reason}</p>
-            </div>
-        </div>
-    `
-}
-
 // Specialists
 fetch(`http://127.0.0.1:3000/patientSpecialist/mySpecialists/${user_id}`)
 .then(res => {
@@ -57,18 +41,5 @@ fetch(`http://127.0.0.1:3000/patientSpecialist/mySpecialists/${user_id}`)
 .then(data => {
     for(let specialist of data) {
         specialistsListElement.innerHTML += specialistComponent(specialist);
-    }
-})
-
-// Requests
-fetch(`http://127.0.0.1:3000/requests/patient/${user_id}`)
-.then(res => {
-    if(res.ok) {
-        return res.json()
-    }
-})
-.then(data => {
-    for(let request of data) {
-        requestsListElement.innerHTML += requestComponent(request);
     }
 })
