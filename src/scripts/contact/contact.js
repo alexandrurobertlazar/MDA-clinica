@@ -1,6 +1,7 @@
 const nameInputElement = document.getElementById("name-contact");
 const emailImputElement = document.getElementById("email-contact");
 const messageTextAreaElement = document.getElementById("message-contact");
+var n=0;
 
 const validationError = {
     name_contact: false,
@@ -11,7 +12,6 @@ const validationError = {
 /**
  * INPUTS VALIDATIONS
  */
-
 nameInputElement.addEventListener('change', (event) => {
     const value = event.target.value;
     if(value.length < 5 || value.length > 20){
@@ -20,6 +20,7 @@ nameInputElement.addEventListener('change', (event) => {
     } else {
         document.getElementById("name-contact-error").classList.add('hidden');
         validationError.name_contact = false;
+        n++;
     }
 });
 
@@ -31,14 +32,9 @@ emailImputElement.addEventListener('change', (event) => {
     } else {
         document.getElementById("email-contact-error").classList.add('hidden');
         validationError.email_contact = false;
+        n++;
     }
 });
-
-
-
-function isEmail(email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-}
 
 messageTextAreaElement.addEventListener('change', (event) => {
     const value = event.target.value;
@@ -48,5 +44,22 @@ messageTextAreaElement.addEventListener('change', (event) => {
     } else {
         document.getElementById("message-contact-error").classList.add('hidden');
         validationError.message_contact = false;
+        n++;
     }
 });
+
+function isEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
+function validation (){
+    if (validationError.name_contact == false && validationError.email_contact == false 
+        && validationError.message_contact == false){
+        if(n==0) {
+            alert("Rellena todos los campos");
+            return false;
+        } else if(n==3){
+            return true;
+        }    
+    }
+}
