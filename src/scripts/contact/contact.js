@@ -3,6 +3,10 @@ const emailImputElement = document.getElementById("email-contact");
 const messageTextAreaElement = document.getElementById("message-contact");
 var n=0;
 
+var namec;
+var email;
+var message;
+
 const validationError = {
     name_contact: false,
     email_contact: false,
@@ -20,7 +24,7 @@ nameInputElement.addEventListener('change', (event) => {
     } else {
         document.getElementById("name-contact-error").classList.add('hidden');
         validationError.name_contact = false;
-        n++;
+        namec=false;
     }
 });
 
@@ -32,7 +36,7 @@ emailImputElement.addEventListener('change', (event) => {
     } else {
         document.getElementById("email-contact-error").classList.add('hidden');
         validationError.email_contact = false;
-        n++;
+        email=false;
     }
 });
 
@@ -44,7 +48,7 @@ messageTextAreaElement.addEventListener('change', (event) => {
     } else {
         document.getElementById("message-contact-error").classList.add('hidden');
         validationError.message_contact = false;
-        n++;
+        message=false;
     }
 });
 
@@ -56,16 +60,10 @@ function validation (){
 
     if(nameInputElement.value != null && emailImputElement.value != null 
         && messageTextAreaElement.value != null){
-        if (validationError.name_contact == false && validationError.email_contact == false 
-            && validationError.message_contact == false){
-            if(n == 3){
-                return true;
-            } else if (n == 0){
-                alert("Tiene que rellenar todos los campos");
-                return false;
-            }
+        if (namec == false && email == false && message == false){
+            return true;
         }
         alert("Tiene que rellenar todos los campos");
+        return false;
     }
-    return false;
 }
