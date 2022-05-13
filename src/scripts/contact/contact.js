@@ -58,14 +58,14 @@ function validation (){
         && messageTextAreaElement.value != null){
         if (validationError.name_contact == false && validationError.email_contact == false 
             && validationError.message_contact == false){
-                if(n == 3){
-                    return true;
-                } else if (n == 0){
-                    alert("Tiene que rellenar todos los campos");
-                    return false;
-                }
+            if(n == 3){
+                return true;
+            } else if (n == 0){
+                alert("Tiene que rellenar todos los campos");
+                return false;
             }
+        }
+        alert("Tiene que rellenar todos los campos");
     }
-    alert("Tiene que rellenar todos los campos");
     return false;
 }
