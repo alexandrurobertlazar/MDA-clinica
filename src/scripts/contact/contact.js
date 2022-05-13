@@ -2,6 +2,8 @@ const nameInputElement = document.getElementById("name-contact");
 const emailImputElement = document.getElementById("email-contact");
 const messageTextAreaElement = document.getElementById("message-contact");
 var n=0;
+const formElement = document.getElementById("form");
+
 
 const validationError = {
     name_contact: false,
@@ -53,13 +55,19 @@ function isEmail(email) {
 }
 
 function validation (){
-    if (validationError.name_contact == false && validationError.email_contact == false 
-        && validationError.message_contact == false){
-        if(n==0) {
-            alert("Rellena todos los campos");
-            return false;
-        } else if(n==3){
-            return true;
-        }    
+
+    if(nameInputElement.value != null && emailImputElement.value != null 
+        && messageTextAreaElement.value != null){
+        if (validationError.name_contact == false && validationError.email_contact == false 
+            && validationError.message_contact == false){
+                if(n == 3){
+                    return true;
+                } else if (n == 0){
+                    alert("Tiene que rellenar todos los campos");
+                    return false;
+                }
+            }
     }
+    alert("Tiene que rellenar todos los campos");
+    return false;
 }
