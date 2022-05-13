@@ -2,8 +2,6 @@ const nameInputElement = document.getElementById("name-contact");
 const emailImputElement = document.getElementById("email-contact");
 const messageTextAreaElement = document.getElementById("message-contact");
 var n=0;
-const formElement = document.getElementById("form");
-
 
 const validationError = {
     name_contact: false,
