@@ -14,7 +14,7 @@ const validationError = {
  */
 nameInputElement.addEventListener('change', (event) => {
     const value = event.target.value;
-    if(value.length < 5 || value.length > 20){
+    if(value.length < 5 || value.length > 50){
         validationError.name_contact = true;
         document.getElementById("name-contact-error").classList.remove('hidden');
     } else {
