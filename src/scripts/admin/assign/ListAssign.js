@@ -30,10 +30,16 @@ const assignDetailsComponent = (assign) => {
                 </div>
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    ${assign.patients}
+                    <button
+                        value=${assign.id_specialist} 
+                        onclick=navigateToSpecificAssign(this)
+                        class="underline text-blue-500">
+                        ${assign.specialist}
+                    </button>
+                    
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    ${assign.specialist}
+                    ${assign.patients}
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     <button
@@ -54,10 +60,16 @@ const assignDetailsComponent = (assign) => {
     `);
 }
 
-// navigate to update treatment
+// navigate to update assign
 function navigateToUpdateAssign(button) {
     localStorage.setItem('id_assign', button.value);
     window.open("/src/view/admin/assign/UpdateAssign.html", "_self");
+}
+
+// navigate to list of specific assigns
+function navigateToSpecificAssign(id_specialist) {
+    localStorage.setItem('id_specialist_specific', id_specialist.value);
+    window.open("/src/view/admin/assign/ListSpecificAssign.html", "_self");
 }
 
 // Fetch Patients and Specialist names
